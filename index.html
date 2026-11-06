@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="build-version" content="__BUILD_VERSION__">
+  <meta name="author" content="Niagova">
   <title>Pet Spa &amp; Hotel Template Showcase</title>
   <meta name="description" content="Compare three Pet Spa &amp; Hotel website concepts in one showcase: Modern, Playful and Premium.">
   <meta name="theme-color" content="#fffaf3">
@@ -18,10 +19,10 @@
 
   <header class="showcase-bar" aria-label="Template preview controls">
     <div class="showcase-identity">
-      <span class="showcase-mark" aria-hidden="true">PS</span>
+      <a class="showcase-logo" href="https://niagova.com/" target="_blank" rel="noopener"><img src="assets/niagova-logo.svg" alt="Niagova" width="118" height="28"></a>
       <span class="showcase-title">
         <strong>Pet Spa &amp; Hotel concepts</strong>
-        <small id="previewStatus" aria-live="polite">Previewing Modern</small>
+        <small><span>Demo by Niagova</span> · <span id="previewStatus" aria-live="polite">Previewing Modern</span></small>
       </span>
     </div>
 
@@ -31,9 +32,12 @@
       <button class="template-tab" type="button" data-template="premium" aria-pressed="false"><span>03</span> Premium</button>
     </nav>
 
-    <a class="open-template" id="openTemplate" href="01-modern/index.html" target="_blank" rel="noopener" aria-label="Open this template as a full page in a new tab">
-      <span class="open-label">Open full page</span> <span aria-hidden="true">↗</span>
-    </a>
+    <div class="showcase-actions">
+      <a class="open-template" id="openTemplate" href="01-modern/index.html" target="_blank" rel="noopener" aria-label="Open this template as a full page in a new tab">
+        <span class="open-label">Open full page</span> <span aria-hidden="true">↗</span>
+      </a>
+      <a class="view-packages" href="https://niagova.com/#pricing" target="_blank" rel="noopener">View packages</a>
+    </div>
   </header>
 
   <main class="preview-shell">
