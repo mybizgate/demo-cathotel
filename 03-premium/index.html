@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="build-version" content="__BUILD_VERSION__">
+<meta name="author" content="Niagova">
 <title>Pet Spa &amp; Hotel · Cat Boarding, Grooming &amp; Daycare</title>
 <meta name="description" content="Pet Spa &amp; Hotel is a boutique cat-care stay with private wooden suites, professional grooming, daycare, thoughtful feeding and restful spaces. Book in seconds via WhatsApp.">
 <meta property="og:title" content="Pet Spa &amp; Hotel · Cat Boarding &amp; Care">
@@ -302,12 +303,6 @@ details p{color:var(--muted);padding:0 0 18px;font-size:.97rem}
 .final .wrap{position:relative;display:grid;gap:22px;justify-items:center}
 .final h2{font-size:clamp(2rem,4.6vw,3.4rem);max-width:18ch}
 .final p{opacity:.85;max-width:52ch}
-.mybizgate-cta{background:var(--cream);padding:54px 0}
-.mybizgate-panel{display:grid;grid-template-columns:minmax(0,1.25fr) auto;gap:34px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);box-shadow:var(--shadow-sm)}
-.mybizgate-panel h2{font-size:clamp(2rem,4vw,3.1rem);margin:8px 0 10px;max-width:18ch}
-.mybizgate-panel p{color:var(--muted);max-width:66ch}
-.mybizgate-services{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;color:var(--ink);font-size:.75rem;font-weight:700}
-.mybizgate-services span::before{content:"●";margin-right:7px;color:var(--teal);font-size:.55rem}
 footer{background:#121b20;color:rgba(255,255,255,.7);padding:34px 0;font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
 footer .brand{font-size:1.05rem}
@@ -434,7 +429,7 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
 /* Reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
-.location:target .rv,.mybizgate-cta:target .rv{opacity:1;transform:none}
+.location:target .rv{opacity:1;transform:none}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 /* Responsive */
@@ -555,8 +550,6 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   .map .open{left:12px;bottom:12px;padding:11px 18px;font-size:.92rem}
   /* final + footer */
   .final .btn{width:100%}
-  .mybizgate-panel{grid-template-columns:1fr;padding:28px 22px}
-  .mybizgate-panel .btn{width:100%}
   footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:14px}
   footer nav{justify-content:center;gap:12px 16px}
   /* contact drawer */
@@ -585,6 +578,21 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   .hero .facts{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+/* Niagova promotion band: the same on every demo template, in Niagova's own colours. */
+.niagova-band { padding: 44px 16px; background: linear-gradient(120deg, #0f2f3e, #153f52); color: #fff; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.niagova-band-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; max-width: 1180px; margin-inline: auto; }
+.niagova-band img { display: block; width: 150px; height: auto; margin-bottom: 14px; }
+.niagova-band-kicker { margin: 0 0 6px; color: #08cfb7; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.niagova-band h2 { max-width: none; margin: 0 0 8px; color: #fff; font-family: inherit; font-size: clamp(1.5rem, 3.4vw, 2.2rem); font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
+.niagova-band-copy { max-width: 60ch; margin: 0; color: #cfe3e4; font-size: .95rem; line-height: 1.55; }
+.niagova-band-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 22px; border-radius: 999px; background: #08cfb7; color: #063746; font-size: .95rem; font-weight: 800; text-decoration: none; white-space: nowrap; transition: background .16s ease; }
+.niagova-band-cta:hover { background: #2fe0ca; }
+.niagova-band-cta:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (max-width: 719px) {
+  .niagova-band-inner { grid-template-columns: 1fr; gap: 22px; }
+  .niagova-band-cta { width: 100%; }
+}
+footer span a{color:inherit;text-decoration:underline}
 </style>
   <script src="../personalise.js?v=__BUILD_VERSION__"></script>
 </head>
@@ -1009,10 +1017,15 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   </div>
 </section>
 
-<section class="mybizgate-cta" id="mybizgate" aria-labelledby="mybizgate-title">
-  <div class="wrap mybizgate-panel">
-    <div><span class="eyebrow">Website by Niagova</span><h2 id="mybizgate-title">Want a website your customers can trust?</h2><p>Niagova creates professional Malaysian business websites with service and package pages, enquiry or booking flows, WhatsApp handoff, review sections and managed support.</p><div class="mybizgate-services"><span>Professional website</span><span>Lead and booking flow</span><span>Managed yearly support</span></div></div>
-    <a class="btn btn-teal" href="https://niagova.com/" target="_blank" rel="noopener">View Niagova packages →</a>
+<section class="niagova-band" aria-labelledby="niagova-title">
+  <div class="niagova-band-inner">
+    <div>
+      <img src="images/niagova-logo-on-dark.svg" alt="Niagova" width="150" height="36" loading="lazy">
+      <p class="niagova-band-kicker">This demo website is built by Niagova</p>
+      <h2 id="niagova-title">Want a website like this for your business?</h2>
+      <p class="niagova-band-copy">Websites, booking systems and business apps for Malaysian SMEs. Every package and price is on niagova.com.</p>
+    </div>
+    <a class="niagova-band-cta" href="https://niagova.com/#pricing" target="_blank" rel="noopener">View Niagova packages <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -1020,7 +1033,7 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   <div class="wrap">
     <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#2F7F93"/><path fill="#fff" d="M18 46c0-9 5-17 14-17s14 8 14 17H18zM20 25l8 5-4 6zM44 25l-8 5 4 6z"/></svg></span><span>Pet Spa &amp; Hotel<small>Cat boarding &amp; care</small></span></a>
     <nav><a href="#services">Services</a><a href="#suites">Suites</a><a href="#feeding">Feeding</a><a href="#rest">Rest</a><a href="#book">Book</a><a href="#location">Find us</a><a href="#" data-desk="track">Track</a><a href="#" data-desk="desk">Front desk</a></nav>
-    <span>© <span id="year"></span> Pet Spa &amp; Hotel · Niagova, Kampung Pandan, 55100 Kuala Lumpur</span>
+    <span>© <span id="year"></span> Pet Spa &amp; Hotel · Kampung Pandan, 55100 Kuala Lumpur · Demo website by <a href="https://niagova.com/" target="_blank" rel="noopener">Niagova</a></span>
   </div>
 </footer>
 

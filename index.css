@@ -6,6 +6,8 @@
   --brand: #1f5e6e;
   --brand-soft: #e3eff1;
   --accent: #ff6f61;
+  --niagova-ink: #063746;
+  --niagova-mint: #08cfb7;
   --focus: #b4471c;
 }
 
@@ -59,7 +61,7 @@ a {
   z-index: 10;
   display: grid;
   flex: none;
-  grid-template-columns: minmax(190px, 1fr) auto minmax(150px, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 22px;
   padding: 12px clamp(16px, 3vw, 42px);
@@ -95,18 +97,16 @@ a {
   min-width: 0;
 }
 
-.showcase-mark {
-  display: grid;
-  flex: 0 0 40px;
-  width: 40px;
-  height: 40px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--brand);
-  color: #fff;
-  font-size: .74rem;
-  font-weight: 800;
-  letter-spacing: .08em;
+.showcase-logo {
+  flex: none;
+  padding-right: 12px;
+  border-right: 1px solid var(--bar-border);
+  line-height: 0;
+}
+
+.showcase-logo img {
+  width: 118px;
+  height: auto;
 }
 
 .showcase-title {
@@ -164,9 +164,33 @@ a {
   color: #fff;
 }
 
+.showcase-actions {
+  display: flex;
+  justify-self: end;
+  gap: 8px;
+}
+
+.view-packages {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--niagova-mint);
+  color: var(--niagova-ink);
+  font-size: .8rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 160ms ease;
+}
+
+.view-packages:hover {
+  background: #2fe0ca;
+}
+
 .open-template {
   display: inline-flex;
-  justify-self: end;
   align-items: center;
   justify-content: center;
   gap: 7px;
@@ -190,6 +214,8 @@ a {
 
 .template-tab:focus-visible,
 .open-template:focus-visible,
+.view-packages:focus-visible,
+.showcase-logo:focus-visible,
 .skip-link:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
@@ -226,7 +252,7 @@ a {
   color: var(--brand);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1180px) {
   .showcase-bar {
     grid-template-columns: 1fr auto;
     gap: 10px 16px;
@@ -243,15 +269,24 @@ a {
   }
 }
 
+@media (max-width: 720px) {
+  .showcase-title {
+    display: none;
+  }
+}
+
 @media (max-width: 560px) {
   .showcase-bar {
     padding-inline: 12px;
   }
 
-  .showcase-mark {
-    flex-basis: 36px;
-    width: 36px;
-    height: 36px;
+  .showcase-logo {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .showcase-logo img {
+    width: 104px;
   }
 
   .open-template {
