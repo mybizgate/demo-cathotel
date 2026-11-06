@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf3">
+  <meta name="description" content="Pet Spa &amp; Hotel is a mobile-friendly cat hotel booking and owner-management concept by Niagova.">
+  <title>Pet Spa &amp; Hotel | Happy cats, happier humans</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#consumer">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary navigation">
+      <a class="brand" href="#consumer" onclick="switchView('consumer')" aria-label="Pet Spa &amp; Hotel home">
+        <span class="brand-mark" aria-hidden="true">🐾</span>
+        <span>Pet Spa &amp; Hotel<small>A home away from home</small></span>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="#suites">Suites</a>
+        <a href="#care">Our care</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <button class="btn small" onclick="openBooking()">Book a stay <span aria-hidden="true">→</span></button>
+      </div>
+
+      <div class="nav-tools">
+        <div class="perspective-switch" aria-label="Demo perspective">
+          <button id="consumer-tab" class="active" type="button" aria-pressed="true" onclick="switchView('consumer')">Pet parent</button>
+          <button id="owner-tab" type="button" aria-pressed="false" onclick="switchView('owner')">Owner</button>
+        </div>
+        <button class="btn icon-only menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation" onclick="toggleMenu()">☰</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#suites" onclick="closeMenu()">Our suites</a>
+      <a href="#care" onclick="closeMenu()">How we care</a>
+      <a href="#gallery" onclick="closeMenu()">Life at Pet Spa &amp; Hotel</a>
+      <a href="#reviews" onclick="closeMenu()">Sample reviews</a>
+    </div>
+  </header>
+
+  <main id="consumer" class="consumer" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Premium cat hotel</span>
+          <h1 id="hero-title">Happy cats.<span>Happier humans.</span></h1>
+          <p class="hero-lead">A calm, comfortable stay with thoughtful care, cosy suites and daily updates—so every cat feels at home and every human can travel easy.</p>
+          <div class="hero-actions">
+            <button class="btn" type="button" onclick="openBooking()"><span aria-hidden="true">▦</span> Book your cat's stay</button>
+            <button class="btn secondary" type="button" onclick="openTracker()"><span aria-hidden="true">⌖</span> Track a booking</button>
+          </div>
+          <div class="hero-proof" aria-label="Pet Spa &amp; Hotel care highlights">
+            <span><b aria-hidden="true">✓</b> Clean, quiet rooms</span>
+            <span><b aria-hidden="true">✓</b> Loving daily care</span>
+            <span><b aria-hidden="true">✓</b> Browser-only demo</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <picture>
+            <source media="(min-width: 860px)" srcset="assets/generated/hero-desktop.webp">
+            <img src="assets/generated/hero-mobile.webp" width="1024" height="1536" alt="Fluffy cat resting in a bright timber suite at Pet Spa &amp; Hotel" fetchpriority="high">
+          </picture>
+          <div class="photo-note"><span aria-hidden="true">📷</span> A little update from their day, every day.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="perks-wrap" aria-label="Why cats feel at home">
+      <div class="container perks">
+        <div class="perk"><span class="perk-icon" aria-hidden="true">⌂</span><strong>Room to settle</strong><small>Comfortable private suites</small></div>
+        <div class="perk"><span class="perk-icon" aria-hidden="true">♧</span><strong>Space to play</strong><small>Safe daily enrichment</small></div>
+        <div class="perk"><span class="perk-icon" aria-hidden="true">♡</span><strong>People who care</strong><small>Gentle, attentive routines</small></div>
+        <div class="perk"><span class="perk-icon" aria-hidden="true">◎</span><strong>Updates you love</strong><small>Photos from their stay</small></div>
+      </div>
+    </section>
+
+    <section class="section suites" id="suites" aria-labelledby="suites-title">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <span class="section-kicker">Pick their happy place</span>
+            <h2 id="suites-title">Our cat suites</h2>
+          </div>
+          <p>Different cats have different rhythms. Choose the space that feels most like them.</p>
+        </div>
+
+        <div class="suite-scroller" aria-label="Cat suite choices">
+          <article class="suite-card">
+            <div class="suite-image">
+              <img src="assets/generated/suite-standard.webp" width="1536" height="1024" alt="Tabby cat relaxing in the Standard Suite" loading="lazy">
+              <span class="suite-badge">Cosy favourite</span>
+            </div>
+            <div class="suite-body">
+              <div class="suite-title-row">
+                <div><h3>Snuggle Nook</h3><p>A peaceful, private nook for easygoing cats.</p></div>
+                <div class="suite-price">RM35<small>per night</small></div>
+              </div>
+              <div class="features"><span>Comfort bed</span><span>Daily cleaning</span><span>Play time</span></div>
+              <button class="btn secondary" type="button" onclick="openBooking('Snuggle Nook')">Choose this suite <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+
+          <article class="suite-card">
+            <div class="suite-image">
+              <img src="assets/generated/suite-deluxe.webp" width="1672" height="941" alt="Silver tabby exploring the Deluxe Suite" loading="lazy">
+              <span class="suite-badge">For curious climbers</span>
+            </div>
+            <div class="suite-body">
+              <div class="suite-title-row">
+                <div><h3>Purrfect Playground</h3><p>More height, more enrichment and more room to roam.</p></div>
+                <div class="suite-price">RM55<small>per night</small></div>
+              </div>
+              <div class="features"><span>Multi-level</span><span>Window perch</span><span>Enrichment toys</span></div>
+              <button class="btn secondary" type="button" onclick="openBooking('Purrfect Playground')">Choose this suite <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+
+          <article class="suite-card">
+            <div class="suite-image">
+              <img src="assets/generated/suite-premium.webp" width="1536" height="1024" alt="Long-haired cat sitting in the Premium Suite" loading="lazy">
+              <span class="suite-badge">Quiet luxury</span>
+            </div>
+            <div class="suite-body">
+              <div class="suite-title-row">
+                <div><h3>Royal Whiskers</h3><p>Our most generous private room with extra attention.</p></div>
+                <div class="suite-price">RM85<small>per night</small></div>
+              </div>
+              <div class="features"><span>Spacious room</span><span>Private play</span><span>Extra care</span></div>
+              <button class="btn secondary" type="button" onclick="openBooking('Royal Whiskers')">Choose this suite <span aria-hidden="true">→</span></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section care" id="care" aria-labelledby="care-title">
+      <div class="container care-grid">
+        <div class="care-photo">
+          <img src="assets/generated/gallery-play.webp" width="1536" height="1024" alt="Tuxedo cat enjoying feather-toy enrichment at Pet Spa &amp; Hotel" loading="lazy">
+        </div>
+        <div class="care-copy">
+          <span class="section-kicker">Care without the guesswork</span>
+          <h2 id="care-title">Their routine, gently looked after.</h2>
+          <p>From familiar feeding notes to active play and quiet time, every stay follows a simple rhythm designed around your cat.</p>
+          <div class="care-steps">
+            <div class="care-step"><span class="step-number">01</span><div><strong>Tell us what they love</strong><small>Add dates, a suite and care notes in the booking form.</small></div></div>
+            <div class="care-step"><span class="step-number">02</span><div><strong>We confirm their room</strong><small>The owner view checks availability before approving the stay.</small></div></div>
+            <div class="care-step"><span class="step-number">03</span><div><strong>Follow their stay</strong><small>Use the booking reference to see the latest demo status.</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <span class="section-kicker">A peek inside</span>
+            <h2 id="gallery-title">Life at Pet Spa &amp; Hotel</h2>
+          </div>
+          <p>Warm naps, window watching, gentle play and plenty of room to simply be a cat.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure><img src="assets/generated/gallery-window.webp" width="1536" height="1024" alt="Calico cat enjoying the skyline from a Pet Spa &amp; Hotel window perch" loading="lazy"><figcaption>Window watching</figcaption></figure>
+          <figure><img src="assets/generated/gallery-rest.webp" width="1536" height="1024" alt="Two cats sleeping together in a soft suite bed" loading="lazy"><figcaption>Quiet company</figcaption></figure>
+          <figure><img src="assets/generated/suite-deluxe.webp" width="1672" height="941" alt="Bright multi-level cat room with a silver tabby" loading="lazy"><figcaption>Room to explore</figcaption></figure>
+          <figure><img src="assets/generated/suite-standard.webp" width="1536" height="1024" alt="Cosy standard cat boarding suite" loading="lazy"><figcaption>Comfort in every corner</figcaption></figure>
+          <figure><img src="assets/generated/gallery-play.webp" width="1536" height="1024" alt="Tuxedo cat reaching for a feather toy" loading="lazy"><figcaption>Daily enrichment</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <span class="section-kicker">Happy cat parents</span>
+            <h2 id="reviews-title">The feeling we designed for.</h2>
+          </div>
+          <p>Illustrative comments for this concept demo—not verified customer reviews.</p>
+        </div>
+        <div class="review-grid">
+          <article class="review-card"><header><img src="assets/generated/suite-standard.webp" alt="Tabby cat portrait" loading="lazy"><div><strong>Aisyah & Mochi</strong><span class="stars" aria-label="Five out of five stars">★★★★★</span></div></header><p>“The simple booking flow made the whole stay feel easy from the start.”</p><small>Sample feedback</small></article>
+          <article class="review-card"><header><img src="assets/generated/suite-deluxe.webp" alt="Silver tabby portrait" loading="lazy"><div><strong>Daniel & Milo</strong><span class="stars" aria-label="Five out of five stars">★★★★★</span></div></header><p>“I loved seeing the clear suite details and being able to track the request.”</p><small>Sample feedback</small></article>
+          <article class="review-card"><header><img src="assets/generated/suite-premium.webp" alt="Long-haired cat portrait" loading="lazy"><div><strong>Siti & Luna</strong><span class="stars" aria-label="Five out of five stars">★★★★★</span></div></header><p>“Warm, calm and thoughtfully organised—exactly the experience I would want.”</p><small>Sample feedback</small></article>
+        </div>
+        <span class="sample-note">Demo content only. No real customer claims are shown.</span>
+      </div>
+    </section>
+
+    <section class="booking-cta" aria-labelledby="cta-title">
+      <div class="container cta-card">
+        <div class="cta-photo"><img src="assets/generated/gallery-rest.webp" width="1536" height="1024" alt="Two comfortable cats resting together at Pet Spa &amp; Hotel" loading="lazy"></div>
+        <div class="cta-copy">
+          <span class="section-kicker">Ready when they are</span>
+          <h2 id="cta-title">Plan their cosy stay.</h2>
+          <p>Create a pretend booking, approve it from the owner dashboard and track the same reference—all in this browser.</p>
+          <button class="btn" type="button" onclick="openBooking()">Start a demo booking <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <main id="owner" class="owner container" tabindex="-1">
+    <section class="owner-hero" aria-labelledby="owner-title">
+      <div>
+        <span class="demo-pill">Owner workspace · local demo</span>
+        <h1 id="owner-title">A calmer day behind the counter.</h1>
+        <p>Review booking requests, protect room availability and keep every stay organised in one friendly view.</p>
+      </div>
+      <div class="owner-actions"><button class="btn secondary" type="button" onclick="switchView('consumer')">← Return to pet parent view</button></div>
+    </section>
+
+    <section class="stats" aria-label="Booking overview">
+      <div class="stat"><strong id="stat-all">0</strong><small>Total requests</small></div>
+      <div class="stat"><strong id="stat-pending">0</strong><small>Waiting for approval</small></div>
+      <div class="stat"><strong id="stat-confirmed">0</strong><small>Confirmed stays</small></div>
+      <div class="stat"><strong id="stat-revenue">RM0</strong><small>Confirmed demo value</small></div>
+    </section>
+
+    <div class="dashboard">
+      <section class="panel" aria-labelledby="requests-title">
+        <div class="panel-head"><div><h2 id="requests-title">Booking requests</h2><p>Approve or reject stays saved in this browser.</p></div><button class="btn secondary small" type="button" onclick="resetDemo()">Reset</button></div>
+        <div id="booking-list" aria-live="polite"></div>
+      </section>
+
+      <aside class="panel">
+        <h3>Built for a smooth handover</h3>
+        <p>This concept connects the guest journey to a simple operations view.</p>
+        <div class="owner-list">
+          <span><b aria-hidden="true">01</b> Requests appear as soon as a pet parent submits.</span>
+          <span><b aria-hidden="true">02</b> Conflicting confirmed stays are blocked automatically.</span>
+          <span><b aria-hidden="true">03</b> Status changes are available in the booking tracker.</span>
+        </div>
+        <div class="notice"><b>Simulation mode:</b> Records remain in localStorage on this device. No payments, messages or customer accounts are created.</div>
+        <br>
+        <button class="btn secondary" type="button" onclick="seedDemo()">Add sample bookings</button>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#consumer" onclick="switchView('consumer')"><span class="brand-mark" aria-hidden="true">🐾</span><span>Pet Spa &amp; Hotel<small>A home away from home</small></span></a>
+        <p class="footer-copy">A mobile-first cat-hotel booking and management concept by <a href="https://niagova.com" target="_blank" rel="noopener">Niagova</a>.</p>
+        <div class="footer-links"><a href="#suites">Suites</a><a href="#care">Our care</a><button class="btn secondary small" type="button" onclick="openTracker()">Track booking</button></div>
+      </div>
+      <div class="footer-meta">Demo only · Sample suites, prices and feedback<br>No real reservations, payments or notifications</div>
+    </div>
+  </footer>
+
+  <div class="mobile-dock" id="mobile-dock">
+    <button class="btn secondary" type="button" onclick="openTracker()">Track</button>
+    <button class="btn" type="button" onclick="openBooking()">Book a stay <span aria-hidden="true">→</span></button>
+  </div>
+
+  <div id="tracker-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="tracker-title" aria-describedby="tracker-description">
+    <div class="modal">
+      <div class="modal-head"><div><span class="section-kicker">Booking status</span><h2 id="tracker-title">Track a booking</h2></div><button class="close" type="button" aria-label="Close booking tracker" onclick="closeTracker()">✕</button></div>
+      <p id="tracker-description">Enter the reference from a demo booking. Records are available only in this browser.</p>
+      <div class="field"><label for="tracking-id">Booking reference</label><input id="tracking-id" placeholder="PS-XXXXXXXX" autocomplete="off" autocapitalize="characters"></div>
+      <button class="btn" type="button" onclick="trackBooking()">Check status <span aria-hidden="true">→</span></button>
+      <div id="tracking-result" class="tracking-result" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div id="booking-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-describedby="booking-description">
+    <div class="modal">
+      <div class="modal-head"><div><span class="section-kicker">A cosy stay awaits</span><h2 id="booking-title">Book their suite</h2></div><button class="close" type="button" aria-label="Close booking form" onclick="closeBooking()">✕</button></div>
+      <p id="booking-description">Create a pretend booking to experience the complete Pet Spa &amp; Hotel flow.</p>
+      <form id="booking-form">
+        <div class="fields">
+          <div class="field full"><label for="cat-name">Your cat's name *</label><input id="cat-name" required maxlength="40" placeholder="e.g. Oyen" autocomplete="off"></div>
+          <div class="field full"><label for="suite">Choose a suite *</label><select id="suite"><option>Snuggle Nook</option><option>Purrfect Playground</option><option>Royal Whiskers</option></select></div>
+          <div class="field"><label for="check-in">Check-in *</label><input type="date" id="check-in" required></div>
+          <div class="field"><label for="check-out">Check-out *</label><input type="date" id="check-out" required></div>
+          <div class="field full"><label for="note">Care notes <span class="optional">(optional)</span></label><textarea id="note" rows="3" maxlength="200" placeholder="Favourite toys, feeding routine, little quirks..."></textarea></div>
+        </div>
+        <div class="total"><span>Estimated demo total</span><span id="booking-total">Select valid dates</span></div>
+        <p id="booking-error" class="error" role="alert"></p>
+        <button class="btn full-button" type="submit">Submit demo booking <span aria-hidden="true">→</span></button>
+      </form>
+      <div id="booking-success" hidden tabindex="-1"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

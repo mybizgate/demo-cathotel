@@ -4,25 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="build-version" content="__BUILD_VERSION__">
-  <title>Pet Spa &amp; Hotel</title>
-  <meta name="description" content="Pet Spa &amp; Hotel website.">
-  <!-- Starter page: remove noindex when the real website replaces it. -->
-  <meta name="robots" content="noindex, nofollow">
+  <title>Pet Spa &amp; Hotel Template Showcase</title>
+  <meta name="description" content="Compare three Pet Spa &amp; Hotel website concepts in one showcase: Modern, Playful and Premium.">
+  <meta name="theme-color" content="#fffaf3">
+  <meta property="og:title" content="Pet Spa &amp; Hotel Template Showcase">
+  <meta property="og:image" content="01-modern/assets/generated/hero-mobile.webp">
   <link rel="canonical" href="https://demo-cathotel.niagova.com/">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="index.css?v=__BUILD_VERSION__">
 </head>
 <body>
-  <main class="page">
-    <p class="eyebrow">Empty template</p>
-    <h1>Pet Spa &amp; Hotel</h1>
-    <p class="lead">This project is ready. Replace this page with the real website.</p>
-    <ul class="checks" aria-label="Template load status">
-      <li class="is-ok" data-check="html">HTML loaded</li>
-      <li data-check="css">CSS not loaded</li>
-      <li data-check="js">JavaScript not loaded</li>
-    </ul>
-    <a class="cta" href="https://wa.me/601158121239?text=Hello%20Pet%20Spa%20%26%20Hotel">WhatsApp us</a>
+  <a class="skip-link" href="#templatePreview">Skip to website preview</a>
+
+  <header class="showcase-bar" aria-label="Template preview controls">
+    <div class="showcase-identity">
+      <span class="showcase-mark" aria-hidden="true">PS</span>
+      <span class="showcase-title">
+        <strong>Pet Spa &amp; Hotel concepts</strong>
+        <small id="previewStatus" aria-live="polite">Previewing Modern</small>
+      </span>
+    </div>
+
+    <nav class="template-tabs" aria-label="Choose a website template">
+      <button class="template-tab" type="button" data-template="modern" aria-pressed="true"><span>01</span> Modern</button>
+      <button class="template-tab" type="button" data-template="playful" aria-pressed="false"><span>02</span> Playful</button>
+      <button class="template-tab" type="button" data-template="premium" aria-pressed="false"><span>03</span> Premium</button>
+    </nav>
+
+    <a class="open-template" id="openTemplate" href="01-modern/index.html" target="_blank" rel="noopener" aria-label="Open this template as a full page in a new tab">
+      <span class="open-label">Open full page</span> <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <main class="preview-shell">
+    <iframe id="templatePreview" name="templatePreview" src="01-modern/index.html" title="Modern cat hotel website template preview"></iframe>
   </main>
-  <script src="index.js?v=__BUILD_VERSION__" defer></script>
+
+  <noscript>
+    <div class="no-script">
+      JavaScript is needed for the template switcher. Open a template directly:
+      <a href="01-modern/index.html">Modern</a>,
+      <a href="02-playful/index.html">Playful</a> or
+      <a href="03-premium/index.html">Premium</a>.
+    </div>
+  </noscript>
+
+  <script src="index.js?v=__BUILD_VERSION__"></script>
 </body>
 </html>

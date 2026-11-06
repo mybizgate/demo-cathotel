@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="build-version" content="__BUILD_VERSION__">
+<title>Pet Spa &amp; Hotel · Cat Boarding, Grooming &amp; Daycare</title>
+<meta name="description" content="Pet Spa &amp; Hotel is a boutique cat-care stay with private wooden suites, professional grooming, daycare, thoughtful feeding and restful spaces. Book in seconds via WhatsApp.">
+<meta property="og:title" content="Pet Spa &amp; Hotel · Cat Boarding &amp; Care">
+<meta property="og:description" content="Private suites, professional grooming, daycare and attentive daily care for cats. Book Pet Spa &amp; Hotel via WhatsApp.">
+<meta property="og:image" content="images/cat-hotel-hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232F7F93'/%3E%3Cpath fill='%23fff' d='M18 44c0-9 5-17 14-17s14 8 14 17H18zM20 23l8 5-4 6zM44 23l-8 5 4 6z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Pet Spa & Hotel — single-file prototype
+   Brand palette lifted from the shop: teal feature wall, warm
+   rubberwood suites, cream concrete floor, black steel frames.
+   ============================================================ */
+:root{
+  --teal:#2F7F93; --teal-deep:#1F5E6E; --teal-soft:#E3F0F3;
+  --wood:#C9924F; --wood-deep:#A2702F; --wood-soft:#F6E7CF;
+  --cream:#FBF7F1; --paper:#FFFFFF; --ink:#1C2A31; --muted:#5B6B72; --line:#E6DED2;
+  --wa:#25D366; --wa-deep:#1DA851;
+  --shadow:0 12px 40px rgba(28,42,49,.12); --shadow-sm:0 4px 14px rgba(28,42,49,.08);
+  --r:20px; --r-sm:12px;
+  --font-display:"Fraunces",Georgia,serif; --font-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--cream);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,.display{font-family:var(--font-display);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:1.35rem}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+section{padding:clamp(64px,8vw,110px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--wood);border-radius:2px}
+.lede{color:var(--muted);font-size:1.1rem;max-width:62ch}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(32px,4vw,56px)}
+.sec-head.center{text-align:center;justify-items:center}
+.sec-head.center .eyebrow::before{display:none}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px rgba(37,211,102,.35)}
+.btn-wa:hover{background:var(--wa-deep)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-deep)}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.26)}
+.btn-outline{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:#fff}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nav .brand{flex:none;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:.02em}
+.brand .mark{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+.brand .mark svg{width:28px;height:28px}
+.brand small{display:block;font-family:var(--font-body);font-weight:700;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+.nav-links{display:flex;gap:28px;align-items:center;font-weight:600;color:#fff}
+.nav-links a{opacity:.9;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--wood);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:11px 18px;font-size:.92rem}
+.nav.solid{background:rgba(251,247,241,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.nav.solid .brand,.nav.solid .nav-links{color:var(--ink)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;color:#fff;place-items:center}
+.nav.solid .burger{color:var(--ink)}
+.burger svg{width:26px;height:26px}
+.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--cream);display:none;flex-direction:column;justify-content:center;align-items:center;gap:26px;font-family:var(--font-display);font-size:1.8rem}
+.mobile-menu.open{display:flex}
+.mobile-menu .close{position:absolute;top:18px;right:18px;width:44px;height:44px}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr);align-items:end;color:#fff;isolation:isolate;padding:0}
+.hero .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#173f49}
+.hero .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.035);transition:opacity 1.1s ease,transform 7s ease;will-change:opacity,transform}
+.hero .hero-media img.is-active{opacity:1;transform:scale(1)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,39,46,.9) 0%,rgba(13,39,46,.62) 42%,rgba(13,39,46,.08) 72%),linear-gradient(0deg,rgba(13,31,37,.78),transparent 55%)}
+.hero .wrap{padding:140px 0 72px;display:grid;grid-template-columns:minmax(0,680px);gap:28px;margin-inline:auto;width:min(1180px,100% - 32px);min-width:0}
+.hero .pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);padding:8px 16px 8px 10px;border-radius:999px;font-weight:700;font-size:.9rem;justify-self:start;max-width:100%;flex-wrap:wrap;line-height:1.3}
+.hero .pill .stars{color:#FFC94D;letter-spacing:1px}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5rem);font-weight:600;max-width:14ch}
+.hero h1 em{font-style:italic;color:#FFD9A8;font-weight:500}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:56ch;opacity:.95}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:12px 30px;font-size:.95rem;opacity:.95;padding-top:10px;border-top:1px solid rgba(255,255,255,.3)}
+.hero .facts span{display:flex;align-items:center;gap:8px}
+.hero .facts svg{width:18px;height:18px;color:#FFD9A8}
+.hero-dots{position:absolute;right:100px;bottom:28px;z-index:2;display:flex;gap:9px;padding:7px 9px;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(13,39,46,.36);backdrop-filter:blur(8px)}
+.hero-dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.48);transition:width .25s ease,background .25s ease;cursor:pointer}
+.hero-dots button.is-active{width:28px;border-radius:999px;background:#FFD9A8}
+.hero-dots button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-hint i{width:1px;height:34px;background:#fff;animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Trust strip */
+.trust{background:var(--paper);border-block:1px solid var(--line);padding:26px 0}
+.trust .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.trust .item{display:flex;align-items:center;gap:14px}
+.trust .ic{width:48px;height:48px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
+.trust .ic svg{width:24px;height:24px}
+.trust b{display:block;font-size:1.05rem}
+.trust small{color:var(--muted)}
+
+/* Intro */
+.intro .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
+.intro .photo{position:relative}
+.intro .photo img{border-radius:var(--r);box-shadow:var(--shadow);aspect-ratio:4/3.6;object-fit:cover;width:100%}
+.intro .photo .float{position:absolute;right:-18px;bottom:-22px;background:var(--paper);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:280px}
+.intro .photo .float img{width:54px;height:54px;border-radius:12px;aspect-ratio:1;box-shadow:none}
+.intro .photo .float b{display:block;font-size:.95rem}
+.intro .photo .float small{color:var(--muted);font-size:.8rem;line-height:1.3;display:block}
+.intro h2{margin:12px 0 18px}
+.intro p+p{margin-top:14px}
+.intro .checks{display:grid;gap:10px;margin:26px 0 0;list-style:none}
+.intro .checks li{display:flex;gap:12px;align-items:flex-start}
+.intro .checks svg{width:22px;height:22px;flex:none;color:var(--wood)}
+.intro .checks b{display:block}
+
+/* Services */
+.services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.svc .img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.svc .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.svc:hover .img img{transform:scale(1.06)}
+.svc .tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.svc .body{padding:24px;display:grid;gap:12px;flex:1;align-content:start}
+.svc .price{display:flex;align-items:baseline;gap:6px;color:var(--wood-deep);font-weight:800}
+.svc .price b{font-size:1.5rem;font-family:var(--font-display)}
+.svc .price small{color:var(--muted);font-weight:600}
+.svc ul{list-style:none;display:grid;gap:8px;color:var(--muted);font-size:.95rem}
+.svc li{display:flex;gap:10px;align-items:flex-start}
+.svc li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wood);flex:none;margin-top:9px}
+.svc .body .btn{margin-top:auto;justify-self:start}
+.svc.featured{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+
+/* Suites */
+.suites .grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:220px;gap:16px}
+.suites .cell{border-radius:var(--r-sm);overflow:hidden;position:relative;grid-column:span 4}
+.suites .cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.suites .cell:hover img{transform:scale(1.05)}
+.suites .cell.big{grid-column:span 8;grid-row:span 2}
+.suites .cell.tall{grid-row:span 2}
+.suites .cap{position:absolute;left:12px;bottom:12px;background:rgba(28,42,49,.72);color:#fff;font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+.suites .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:40px}
+.suites .feat div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:20px;display:grid;gap:8px}
+.suites .feat svg{width:28px;height:28px;color:var(--teal)}
+.suites .feat b{font-size:1.05rem}
+.suites .feat p{color:var(--muted);font-size:.93rem}
+
+/* Daily care: feeding + rest */
+.daily-care{background:linear-gradient(180deg,#F3EADC 0%,var(--cream) 100%)}
+.care-stack{display:grid;gap:28px}
+.care-story{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-sm);min-height:460px}
+.care-story[id]{scroll-margin-top:88px}
+.care-story:target{opacity:1;transform:none}
+.care-story.rest{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr)}
+.care-story.rest .care-visual{order:2}
+.care-visual{position:relative;min-height:420px;background:var(--teal-soft);overflow:hidden}
+.care-visual>img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .8s ease}
+.care-story:hover .care-visual>img{transform:scale(1.035)}
+.care-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(28,42,49,.38))}
+.care-label{position:absolute;left:22px;bottom:20px;z-index:1;display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}
+.care-label span{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);display:grid;place-items:center}
+.care-label svg{width:20px;height:20px}
+.care-copy{padding:clamp(28px,4vw,54px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.care-copy h2{margin:12px 0 16px}
+.care-copy>.lede{font-size:1.02rem}
+.care-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 28px;width:100%}
+.care-point{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:15px}
+.care-point b{display:block;font-size:.94rem;margin-bottom:3px}
+.care-point span{display:block;color:var(--muted);font-size:.84rem;line-height:1.45}
+
+/* Steps */
+.steps{background:var(--teal);color:#fff;position:relative;overflow:hidden}
+.steps::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06)}
+.steps .eyebrow{color:#FFD9A8}
+.steps .lede{color:rgba(255,255,255,.85)}
+.steps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:1}
+.step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:26px;display:grid;gap:12px}
+.step .n{font-family:var(--font-display);font-size:2.6rem;line-height:1;color:#FFD9A8}
+.step b{font-size:1.1rem}
+.step p{color:rgba(255,255,255,.82);font-size:.95rem}
+
+/* Gallery */
+.gallery .masonry{columns:4 220px;column-gap:14px}
+.gallery .masonry a{display:block;break-inside:avoid;margin-bottom:14px;border-radius:var(--r-sm);overflow:hidden;position:relative}
+.gallery .masonry img{width:100%;transition:transform .6s}
+.gallery .masonry a:hover img{transform:scale(1.04)}
+.gallery .masonry a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(28,42,49,.35));opacity:0;transition:opacity .3s}
+.gallery .masonry a:hover::after{opacity:1}
+.ig-cta{margin-top:32px;text-align:center}
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(15,22,26,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(92vw,1100px);max-height:86vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox button{position:absolute;color:#fff;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.lightbox button svg{width:26px;height:26px}
+.lightbox .x{top:18px;right:18px}
+.lightbox .prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox .next{right:18px;top:50%;transform:translateY(-50%)}
+
+/* Reviews */
+.reviews{background:var(--paper)}
+.reviews .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.rating-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:34px;display:grid;gap:14px;text-align:center;justify-items:center}
+.rating-card .big{font-family:var(--font-display);font-size:5rem;line-height:1;color:var(--ink)}
+.rating-card .stars{color:#F5B301;font-size:1.6rem;letter-spacing:4px}
+.rating-card small{color:var(--muted)}
+.rating-card .g{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.rating-card .g svg{width:22px;height:22px}
+.why{display:grid;gap:18px}
+.why .item{display:flex;gap:16px;align-items:flex-start}
+.why .ic{width:46px;height:46px;border-radius:14px;background:var(--wood-soft);color:var(--wood-deep);display:grid;place-items:center;flex:none}
+.why .ic svg{width:24px;height:24px}
+.why b{display:block;font-size:1.05rem}
+.why p{color:var(--muted);font-size:.95rem}
+
+/* Booking */
+.booking{background:linear-gradient(180deg,var(--cream),#F3EADC)}
+.booking .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.book-card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
+.book-card h3{font-size:1.5rem}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--cream);padding:6px;border-radius:14px}
+.seg button{padding:12px 8px;border-radius:10px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.9rem;transition:background .2s,color .2s}
+.seg button svg{width:22px;height:22px}
+.seg button.on{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(47,127,147,.3)}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;min-width:0;min-height:50px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.field textarea{min-height:84px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.estimate{background:var(--cream);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
+.estimate .line{display:flex;justify-content:space-between;color:var(--muted);font-size:.93rem}
+.estimate .total{display:flex;justify-content:space-between;align-items:baseline;font-weight:800;border-top:1px dashed var(--line);padding-top:8px;margin-top:4px}
+.estimate .total b{font-family:var(--font-display);font-size:1.6rem;color:var(--teal-deep)}
+.estimate small{color:var(--muted);font-size:.78rem}
+.book-card .btn-wa{width:100%;font-size:1.05rem;padding:16px;white-space:normal;text-align:center}
+.book-card .fine{font-size:.82rem;color:var(--muted);text-align:center}
+.preview{overflow-wrap:anywhere;background:#E7F8EE;border:1px solid #BFEBD1;border-radius:14px;padding:14px 16px;font-size:.9rem;white-space:pre-wrap;color:#1b4d31;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5;max-height:200px;overflow:auto}
+.preview-label{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.preview-label i{width:8px;height:8px;border-radius:50%;background:var(--wa);display:inline-block;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.booking .side{display:grid;gap:22px;position:sticky;top:96px}
+.booking .side .list{display:grid;gap:16px}
+.booking .side .list>div{display:flex;gap:14px;align-items:flex-start}
+.booking .side .list svg{width:26px;height:26px;color:var(--teal);flex:none}
+.booking .side .list b{display:block}
+.booking .side .list p{color:var(--muted);font-size:.95rem}
+.phone-mock{background:var(--paper);border-radius:var(--r);padding:18px;box-shadow:var(--shadow-sm);display:grid;gap:10px}
+.phone-mock .hdr{display:flex;align-items:center;gap:10px;font-weight:700}
+.phone-mock .hdr .av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:.8rem}
+.phone-mock .hdr small{display:block;color:var(--wa-deep);font-weight:600;font-size:.75rem}
+.bubble{overflow-wrap:anywhere;background:#DCF8C6;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:.88rem;max-width:88%}
+.bubble.me{background:#F1F0F0;border-radius:12px 12px 2px 12px;justify-self:end}
+
+/* FAQ */
+.faq .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;align-items:start}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:4px 20px}
+summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-display);font-size:1.6rem;color:var(--teal);transition:transform .3s;line-height:1}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 18px;font-size:.97rem}
+
+/* Location */
+.location{background:var(--paper)}
+.location .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,4vw,56px);align-items:stretch}
+.contact-list{display:grid;gap:18px;margin-top:26px}
+.contact-list>a,.contact-list>div{display:flex;gap:14px;align-items:flex-start}
+.contact-list .ic{width:46px;height:46px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:22px;height:22px}
+.contact-list b{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact-list span{font-weight:600;overflow-wrap:anywhere}
+.contact-list a:hover span{color:var(--teal)}
+.map{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);min-height:420px;position:relative;background:var(--teal-soft)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+.map .open{position:absolute;left:16px;bottom:16px}
+.socials{display:flex;gap:10px;margin-top:26px}
+.socials a{width:46px;height:46px;border-radius:14px;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s,color .2s,border .2s}
+.socials a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.socials svg{width:22px;height:22px}
+
+/* Final CTA + footer */
+.final{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22}
+.final .wrap{position:relative;display:grid;gap:22px;justify-items:center}
+.final h2{font-size:clamp(2rem,4.6vw,3.4rem);max-width:18ch}
+.final p{opacity:.85;max-width:52ch}
+.mybizgate-cta{background:var(--cream);padding:54px 0}
+.mybizgate-panel{display:grid;grid-template-columns:minmax(0,1.25fr) auto;gap:34px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);box-shadow:var(--shadow-sm)}
+.mybizgate-panel h2{font-size:clamp(2rem,4vw,3.1rem);margin:8px 0 10px;max-width:18ch}
+.mybizgate-panel p{color:var(--muted);max-width:66ch}
+.mybizgate-services{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;color:var(--ink);font-size:.75rem;font-weight:700}
+.mybizgate-services span::before{content:"●";margin-right:7px;color:var(--teal);font-size:.55rem}
+footer{background:#121b20;color:rgba(255,255,255,.7);padding:34px 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer .brand{font-size:1.05rem}
+footer .brand .mark{width:34px;height:34px}
+footer .brand .mark svg{width:22px;height:22px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+
+/* Quick contact mini-FAB */
+.mini-fab{position:fixed;right:20px;bottom:20px;z-index:55;width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--teal),var(--wood));color:#fff;box-shadow:0 16px 38px rgba(28,42,49,.28);display:grid;place-items:center;transition:transform .2s,box-shadow .2s}
+.mini-fab:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(28,42,49,.32)}
+.mini-fab svg{width:26px;height:26px}
+.mini-fab[aria-expanded="true"]{background:var(--ink)}
+.mini-drawer{position:fixed;right:20px;bottom:90px;z-index:54;width:min(318px,calc(100vw - 28px));background:rgba(255,255,255,.97);backdrop-filter:blur(18px);border:1px solid rgba(28,42,49,.1);border-radius:22px;box-shadow:0 22px 58px rgba(28,42,49,.22);padding:16px;opacity:0;visibility:hidden;transform:translateY(10px) scale(.98);transform-origin:bottom right;transition:opacity .2s,transform .2s,visibility .2s}
+.mini-drawer.open{opacity:1;visibility:visible;transform:none}
+.mini-drawer h2{font-family:var(--font-body);font-size:1rem;letter-spacing:0;margin:0 0 6px}
+.mini-drawer>p{font-size:.88rem;color:var(--muted);line-height:1.45;margin-bottom:12px}
+.mini-actions{display:grid;gap:9px}
+.mini-actions a{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:14px;background:var(--cream);border:1px solid var(--line);font-weight:700;font-size:.92rem;transition:background .2s,border .2s,transform .2s}
+.mini-actions a:hover{background:var(--teal-soft);border-color:rgba(47,127,147,.28);transform:translateX(-2px)}
+.mini-actions .ic{width:34px;height:34px;border-radius:11px;background:var(--paper);color:var(--teal);display:grid;place-items:center;flex:none;box-shadow:var(--shadow-sm)}
+.mini-actions svg{width:18px;height:18px}
+.mini-actions small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;margin-top:1px}
+.mini-fab:focus-visible,.mini-actions a:focus-visible{outline:3px solid var(--wood);outline-offset:3px}
+
+/* Reservation desk — demo tracking panel (browser-only) */
+.track-link{display:inline-flex;align-items:center;gap:6px}
+.track-link svg{width:15px;height:15px}
+.desk-backdrop{position:fixed;inset:0;z-index:70;background:rgba(13,31,37,.55);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.desk-backdrop.open{opacity:1;visibility:visible}
+.desk{position:fixed;top:0;right:0;bottom:0;z-index:71;width:min(450px,100vw);background:var(--ink);color:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.7,.2,1);box-shadow:-24px 0 60px rgba(0,0,0,.35);overflow:hidden}
+.desk.open{transform:none}
+.desk::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--wood),#FFD9A8,var(--wood))}
+.desk-head{padding:30px 26px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.desk-head .eyebrow{color:#FFD9A8}
+.desk-head .eyebrow::before{background:#FFD9A8}
+.desk-head h2{font-size:1.75rem;margin-top:8px;color:#fff}
+.desk-head p{color:rgba(255,255,255,.68);font-size:.88rem;margin-top:6px;line-height:1.5}
+.desk .x{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex:none;transition:background .2s}
+.desk .x:hover{background:rgba(255,255,255,.22)}
+.desk .x svg{width:22px;height:22px}
+.desk-tabs{display:flex;margin:0 26px;border-bottom:1px solid rgba(255,255,255,.14)}
+.desk-tabs button{flex:1;padding:12px 0;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.58);position:relative;transition:color .2s}
+.desk-tabs button:hover{color:#fff}
+.desk-tabs button[aria-selected="true"]{color:#fff}
+.desk-tabs button[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--wood);border-radius:3px 3px 0 0}
+.desk-body{padding:22px 26px 34px;overflow-y:auto;flex:1;overscroll-behavior:contain}
+.desk-body [role="tabpanel"]{display:grid;gap:18px;align-content:start}
+.ref-input{display:flex;gap:8px}
+.ref-input input{flex:1;min-width:0;min-height:50px;padding:12px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;transition:border .2s,box-shadow .2s}
+.ref-input input::placeholder{color:rgba(255,255,255,.4);text-transform:none;letter-spacing:0;font-family:var(--font-body)}
+.ref-input input:focus{outline:0;border-color:var(--wood);box-shadow:0 0 0 4px rgba(201,146,79,.25)}
+.btn-wood{background:var(--wood);color:var(--ink)}
+.btn-wood:hover{background:#E0AA63}
+.desk .btn{padding:12px 20px;font-size:.95rem}
+.desk .hint{color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.5}
+.recent{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.recent span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:800}
+.recent button{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-size:.78rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:rgba(255,255,255,.85);transition:border .2s,color .2s}
+.recent button:hover{border-color:var(--wood);color:#FFD9A8}
+.track-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px}
+.track-card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.track-card .ref{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;letter-spacing:.12em;color:#FFD9A8}
+.track-card h3{font-size:1.35rem;margin:4px 0 2px;color:#fff}
+.track-card .meta{color:rgba(255,255,255,.7);font-size:.88rem;line-height:1.55}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;flex:none}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.pending{background:rgba(255,201,77,.16);color:#FFC94D}
+.badge.confirmed{background:rgba(115,226,154,.16);color:#73E29A}
+.badge.declined{background:rgba(255,154,143,.16);color:#FF9A8F}
+.timeline{margin:18px 0 0;padding:18px 0 0;border-top:1px dashed rgba(255,255,255,.18);list-style:none}
+.timeline li{display:grid;grid-template-columns:22px 1fr;gap:12px;position:relative;padding-bottom:18px}
+.timeline li::before{content:"";position:absolute;left:10px;top:22px;bottom:0;width:2px;background:rgba(255,255,255,.14)}
+.timeline li:last-child::before{display:none}
+.timeline li:last-child{padding-bottom:0}
+.timeline i{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;font-style:normal;font-size:.7rem;font-weight:800;background:var(--ink);color:rgba(255,255,255,.5)}
+.timeline li.done i{border-color:#73E29A;background:#73E29A;color:var(--ink)}
+.timeline li.now i{border-color:#FFC94D;color:#FFC94D;box-shadow:0 0 0 5px rgba(255,201,77,.16)}
+.timeline li.bad i{border-color:#FF9A8F;background:#FF9A8F;color:var(--ink)}
+.timeline b{display:block;font-size:.92rem}
+.timeline li.todo b{color:rgba(255,255,255,.55)}
+.timeline span{color:rgba(255,255,255,.6);font-size:.8rem}
+.track-empty{color:rgba(255,255,255,.72);font-size:.9rem;padding:16px;border:1px dashed rgba(255,255,255,.22);border-radius:14px;line-height:1.5}
+.desk-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.desk-stats div{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 8px;text-align:center}
+.desk-stats b{display:block;font-family:var(--font-display);font-size:1.5rem;color:#FFD9A8;line-height:1.1}
+.desk-stats span{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700}
+.desk-tools{display:flex;gap:8px;flex-wrap:wrap}
+.desk-tools button{padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-size:.82rem;font-weight:700;color:rgba(255,255,255,.85);transition:border .2s,color .2s}
+.desk-tools button:hover{border-color:#fff;color:#fff}
+.desk-tools button.arm{border-color:#FF9A8F;color:#FF9A8F}
+.desk-list{display:grid;gap:10px}
+.res-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px;display:grid;gap:8px}
+.res-row header{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.res-row header b{font-size:1rem}
+.res-row .ref{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;letter-spacing:.1em;color:#FFD9A8}
+.res-row .meta{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.5}
+.res-row .acts{display:flex;gap:8px;margin-top:4px}
+.res-row .acts button{flex:1;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.85rem;transition:filter .2s}
+.res-row .acts button:hover{filter:brightness(1.1)}
+.res-row .ok{background:#73E29A;color:var(--ink)}
+.res-row .no{border:1.5px solid rgba(255,154,143,.6);color:#FF9A8F}
+.link-btn{font-weight:800;color:var(--teal-deep);text-decoration:underline;text-underline-offset:3px;padding:0}
+.link-btn:hover{color:var(--teal)}
+.demo-split{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.demo-split::before,.demo-split::after{content:"";flex:1;height:1px;background:var(--line)}
+.book-card .btn-demo{width:100%;border:1.5px dashed var(--wood-deep);color:var(--wood-deep);background:var(--wood-soft);white-space:normal;text-align:center;font-size:.98rem}
+.book-card .btn-demo:hover{background:var(--wood);color:#fff;border-style:solid}
+.ticket{position:relative;background:var(--ink);color:#fff;border-radius:16px;padding:20px 24px;display:grid;gap:8px;overflow:hidden;outline:0}
+.ticket::before,.ticket::after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;background:var(--paper);top:calc(50% - 12px)}
+.ticket::before{left:-12px}.ticket::after{right:-12px}
+.ticket .eyebrow{color:#FFD9A8}.ticket .eyebrow::before{background:#FFD9A8}
+.ticket .code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.7rem;letter-spacing:.16em;color:#FFD9A8;font-weight:700;line-height:1.2}
+.ticket p{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.5}
+.ticket .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.ticket .acts button{padding:10px 16px;border-radius:999px;font-weight:700;font-size:.86rem;transition:background .2s}
+.ticket .copy{border:1.5px solid rgba(255,255,255,.4)}
+.ticket .copy:hover{background:rgba(255,255,255,.12)}
+.ticket .go{background:var(--wood);color:var(--ink)}
+.ticket .go:hover{background:#E0AA63}
+.desk-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:90;max-width:calc(100vw - 32px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:.9rem;font-weight:600;box-shadow:var(--shadow);border-left:4px solid var(--wood);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+.desk-toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.desk .x:focus-visible,.desk-tabs button:focus-visible,.recent button:focus-visible,.desk-tools button:focus-visible,.res-row .acts button:focus-visible,.ticket .acts button:focus-visible,.desk .btn:focus-visible{outline:3px solid #FFD9A8;outline-offset:3px}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.location:target .rv,.mybizgate-cta:target .rv{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* Responsive */
+@media (max-width:1000px){
+  /* The full business name and the links no longer fit side by side here. */
+  .nav-links,.nav .btn-wa{display:none}
+  .burger{display:grid}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .steps .grid{grid-template-columns:1fr 1fr}
+  .intro .grid,.reviews .grid,.booking .grid,.location .grid,.faq .grid,.care-story,.care-story.rest{grid-template-columns:1fr}
+  .care-story.rest .care-visual{order:0}
+  .care-visual{min-height:380px}
+  .booking .side{position:static}
+  .suites .cell{grid-column:span 6}.suites .cell.big{grid-column:span 12}
+}
+/* Phone layout: ~90% of visitors */
+.hide-m{display:inline}
+@media (max-width:720px){
+  html{-webkit-tap-highlight-color:transparent}
+  section{padding:56px 0}
+  h2{font-size:clamp(1.8rem,7.6vw,2.3rem)}
+  .lede{font-size:1rem}
+  .sec-head{margin-bottom:26px}
+  .hide-m{display:none}
+  .btn{padding:14px 20px}
+  /* nav */
+  .nav{padding:12px 0}.nav.solid{padding:8px 0}
+  .nav-links,.nav .btn-wa{display:none}
+  .burger{display:grid}
+  .brand{font-size:1.1rem}.brand .mark{width:38px;height:38px}
+  /* hero */
+  .hero{min-height:min(100svh,780px)}
+  .hero .hero-media img{object-position:62% center}
+  .hero::before{background:linear-gradient(180deg,rgba(13,39,46,.76) 0%,rgba(13,39,46,.32) 35%,rgba(13,31,37,.9) 100%)}
+  .hero .wrap{padding:108px 0 64px;gap:18px}
+  .hero .pill{font-size:.82rem;padding:7px 14px 7px 9px}
+  .hero h1{font-size:clamp(2.1rem,10.5vw,2.9rem);max-width:none}
+  .hero p{font-size:1rem}
+  .hero .cta{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero .cta .btn{width:100%}
+  .hero .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;font-size:.84rem;padding-top:14px}
+  .hero .facts svg{width:16px;height:16px}
+  .hero-dots{left:16px;right:auto;bottom:18px}
+  .scroll-hint{display:none}
+  /* trust strip: 2x2 */
+  .trust{padding:18px 0}
+  .trust .wrap{grid-template-columns:1fr 1fr;gap:12px}
+  .trust .item{gap:10px;align-items:flex-start}
+  .trust .ic{width:38px;height:38px;border-radius:11px}.trust .ic svg{width:19px;height:19px}
+  .trust b{font-size:.92rem;line-height:1.25}.trust small{font-size:.78rem;line-height:1.3;display:block}
+  /* intro */
+  .intro .photo img{aspect-ratio:4/3}
+  .intro .photo .float{position:static;margin-top:12px;max-width:none}
+  /* services */
+  .svc-grid{grid-template-columns:1fr;gap:18px}
+  .svc .img{aspect-ratio:16/10}
+  .svc .body{padding:20px}
+  .svc .body .btn{width:100%}
+  /* suites */
+  .suites .grid{grid-auto-rows:190px;gap:10px}
+  .suites .cell,.suites .cell.big{grid-column:span 12}.suites .cell.tall{grid-row:span 1}
+  .suites .cell.big{grid-row:span 1}
+  .suites .feat{grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .suites .feat div{grid-template-columns:auto 1fr;gap:4px 14px;padding:16px;align-items:center}
+  .suites .feat svg{grid-row:1/3;width:26px;height:26px}
+  .suites .feat b{font-size:1rem}.suites .feat p{font-size:.9rem;grid-column:2}
+  /* daily care */
+  .care-stack{gap:18px}
+  .care-story{border-radius:20px;min-height:0}
+  .care-visual{min-height:290px}
+  .care-copy{padding:24px 20px 26px}
+  .care-points{grid-template-columns:1fr;gap:9px;margin:20px 0 22px}
+  .care-point{padding:13px 14px}
+  .care-copy .btn{width:100%}
+  /* steps: number beside text */
+  .steps .grid{grid-template-columns:1fr;gap:12px}
+  .step{grid-template-columns:auto 1fr;gap:2px 16px;padding:18px;align-items:center}
+  .step .n{grid-row:1/3;font-size:2rem}
+  .step b{font-size:1.02rem}.step p{font-size:.92rem;grid-column:2}
+  /* gallery: two columns */
+  .gallery .masonry{columns:2;column-gap:10px}
+  .gallery .masonry a{margin-bottom:10px;border-radius:10px}
+  .ig-cta{margin-top:18px}.ig-cta .btn{width:100%}
+  /* reviews */
+  .rating-card{padding:26px 20px;gap:10px}
+  .rating-card .big{font-size:4rem}
+  .rating-card .btn{width:100%}
+  .why{gap:14px}.why .ic{width:40px;height:40px}.why p{font-size:.92rem}
+  /* booking */
+  .booking .grid{grid-template-columns:minmax(0,1fr)}
+  .booking .side{position:static}
+  .book-card{padding:20px 16px;border-radius:16px}
+  .book-card h3{font-size:1.3rem}
+  .seg{gap:6px;padding:5px}
+  .seg button{font-size:.78rem;padding:10px 4px}
+  .row2{grid-template-columns:1fr 1fr;gap:10px}
+  .row2 .field label{font-size:.72rem}
+  .field label{font-size:.76rem}
+  .field input,.field select,.field textarea{padding:12px 12px;font-size:16px}
+  .estimate{padding:14px}
+  .estimate .total b{font-size:1.4rem}
+  .preview{font-size:.82rem;max-height:150px}
+  .book-card .btn-wa{font-size:1rem}
+  .booking .side .list>div{gap:12px}
+  .booking .side .list svg{width:24px;height:24px}
+  .phone-mock{padding:16px}
+  .bubble{max-width:92%;font-size:.85rem}
+  /* faq */
+  .faq .grid{grid-template-columns:1fr;gap:10px}
+  details{padding:2px 16px}
+  summary{padding:14px 0;font-size:.98rem}
+  /* location */
+  .location .grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .contact-list{gap:14px}
+  .contact-list .ic{width:40px;height:40px}
+  .contact-list span{font-size:.95rem}
+  .map{min-height:300px;border-radius:16px}.map iframe{min-height:300px}
+  .map .open{left:12px;bottom:12px;padding:11px 18px;font-size:.92rem}
+  /* final + footer */
+  .final .btn{width:100%}
+  .mybizgate-panel{grid-template-columns:1fr;padding:28px 22px}
+  .mybizgate-panel .btn{width:100%}
+  footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:14px}
+  footer nav{justify-content:center;gap:12px 16px}
+  /* contact drawer */
+  .mini-fab{right:14px;bottom:14px;width:54px;height:54px;border-radius:17px}
+  .mini-drawer{right:14px;bottom:78px;width:calc(100vw - 28px)}
+  /* reservation desk becomes a bottom sheet */
+  .desk{top:auto;left:0;width:100vw;max-height:88svh;border-radius:22px 22px 0 0;transform:translateY(100%);box-shadow:0 -24px 60px rgba(0,0,0,.35)}
+  .desk.open{transform:none}
+  .desk-head{padding:24px 18px 12px}
+  .desk-head h2{font-size:1.45rem}
+  .desk-tabs{margin:0 18px}
+  .desk-body{padding:18px 18px calc(28px + env(safe-area-inset-bottom,0px))}
+  .desk-stats b{font-size:1.25rem}
+  .ticket{padding:18px 20px}.ticket .code{font-size:1.4rem}
+  .ticket .acts button{flex:1}
+  /* lightbox controls at the bottom so they never cover the photo */
+  .lightbox img{max-height:72vh;max-width:94vw}
+  .lightbox .prev,.lightbox .next{top:auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none}
+  .lightbox .prev{left:calc(50% - 64px)}.lightbox .next{right:calc(50% - 64px)}
+  /* mobile menu */
+  .mobile-menu{font-size:1.35rem;gap:12px;justify-content:flex-start;overflow-y:auto;padding:74px 20px 28px}
+}
+@media (max-width:380px){
+  .row2{grid-template-columns:1fr}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .hero .facts{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Pet Spa &amp; Hotel home">
+      <span class="mark"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#2F7F93"/><path fill="#fff" d="M18 46c0-9 5-17 14-17s14 8 14 17H18zM20 25l8 5-4 6zM44 25l-8 5 4 6z"/><circle cx="27" cy="36" r="2" fill="#2F7F93"/><circle cx="37" cy="36" r="2" fill="#2F7F93"/></svg></span>
+      <span>Pet Spa &amp; Hotel<small>Cat boarding &amp; care</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#suites">Suites</a>
+      <a href="#feeding">Feeding</a>
+      <a href="#rest">Rest</a>
+      <a href="#book">Book</a>
+      <a href="#" class="track-link" data-desk="track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v3l2 1"/></svg>Track</a>
+    </nav>
+    <a class="btn btn-wa wa-link" href="#" data-msg="Hi Pet Spa &amp; Hotel! I'd like to make a booking.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+      Book on WhatsApp
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="#services">Services</a><a href="#suites">Suites</a><a href="#feeding">Feeding</a><a href="#rest">Rest</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#" data-desk="track">Track a reservation</a><a href="#faq">FAQ</a><a href="#location">Find us</a>
+  <a class="btn btn-wa wa-link" href="#" data-msg="Hi Pet Spa &amp; Hotel! I'd like to make a booking." style="font-family:var(--font-body);font-size:1rem">Book on WhatsApp</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img class="is-active" src="images/cat-hotel-hero.webp" alt="Three relaxed cats enjoying the warm Pet Spa &amp; Hotel lounge" fetchpriority="high">
+    <img src="images/generated/hero-play.webp" alt="Playful cats enjoying a feather toy and tunnel in the Pet Spa &amp; Hotel play lounge">
+    <img src="images/generated/hero-cuddle.webp" alt="A fluffy cat cuddling a ginger kitten in a cosy Pet Spa &amp; Hotel lounge">
+  </div>
+  <div class="wrap">
+    <span class="pill"><span class="stars">★★★★★</span> 4.9 on Google<span class="hide-m"> · Loved by Kuala Lumpur cat parents</span></span>
+    <h1>Pet Spa &amp; Hotel, <em>a little holiday for your cat</em></h1>
+    <p>Private wooden suites, gentle professional grooming and a sunlit play hall in Kampung Pandan. Drop off with peace of mind, pick up one very happy cat.</p>
+    <div class="cta">
+      <a class="btn btn-wa wa-link" href="#" data-msg="Hi Pet Spa &amp; Hotel! I'd like to check availability for my cat.">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+        Check availability
+      </a>
+      <a class="btn btn-ghost" href="#suites">See the suites</a>
+    </div>
+    <div class="facts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Cat hotel · boarding</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l12 12M6 15l12-12M4 21l4-4M16 21l4-4"/></svg>Certified grooming</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Daycare</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Kampung Pandan, Kuala Lumpur</span>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots" role="group" aria-label="Choose a Pet Spa &amp; Hotel scene"></div>
+  <div class="scroll-hint" aria-hidden="true"><i></i>Scroll</div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="wrap">
+    <div class="item rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L5.8 21l1.4-7L2 9.3l7-.8z"/></svg></div><div><b>4.9 ★ Google rating</b><small>Rated by real cat parents</small></div></div>
+    <div class="item rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg></div><div><b>Certified groomer</b><small>Professional cat grooming on site</small></div></div>
+    <div class="item rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div><div><b>Private wooden suites</b><small>Own litter, water &amp; resting shelf</small></div></div>
+    <div class="item rv d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div><div><b>Book via WhatsApp</b><small>Reply fast, no app to install</small></div></div>
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="eyebrow">Welcome · Selamat datang</span>
+      <h2>Not a cage. A cosy little hotel room, built for cats.</h2>
+      <p class="lede">Pet Spa &amp; Hotel is a dedicated cat-only hotel in Kampung Pandan, Kuala Lumpur. Every guest gets a private rubberwood suite with mesh ventilation, a resting shelf, fresh water and their own litter tray, plus time in the bright play hall with cat trees, tunnels and an exercise wheel.</p>
+      <p class="lede">Whether you are away for a weekend, travelling for balik kampung, or just need a trusted groomer, your cat is cared for by people who genuinely love them.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Cats only, always</b><span>No barking neighbours. A calm, quiet space designed around feline comfort.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Air-conditioned &amp; naturally lit</b><span>Floor-to-ceiling windows and cool air all day long.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Updates while you are away</b><span>Ask for photo updates on WhatsApp and see how your cat is settling in.</span></div></li>
+      </ul>
+    </div>
+    <div class="photo rv d1">
+      <img src="images/generated/welcome-cat-kitten.webp" alt="A gentle ginger cat welcoming a curious tabby kitten in a cosy lounge">
+      <div class="float">
+        <img src="images/web/kitten-peek.jpg" alt="">
+        <div><b>“Love is a perpetual hotel”</b><small>The quote painted on our lounge wall, and how we treat every guest.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Our services</span>
+      <h2>Three ways we take care of your cat</h2>
+      <p class="lede">Simple packages, clear rates. Mix and match: many guests add a grooming session at the end of their stay so they go home fluffy and fresh.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc featured rv">
+        <div class="img"><img src="images/generated/service-boarding.webp" alt="A relaxed silver tabby enjoying a spacious private wooden boarding suite" loading="lazy"><span class="tag">Most popular</span></div>
+        <div class="body">
+          <h3>Cat Hotel · Boarding</h3>
+          <div class="price"><small>from</small><b data-price="hotel-standard"></b><small>/ night</small></div>
+          <ul>
+            <li>Private wooden suite with LED lighting &amp; mesh ventilation</li>
+            <li>Own litter tray, water dispenser and resting shelf</li>
+            <li>Supervised playtime in the play hall daily</li>
+            <li>Feeding on your cat's usual schedule &amp; food</li>
+            <li>Photo updates on request</li>
+          </ul>
+          <button class="btn btn-teal" data-book="hotel">Book a stay</button>
+        </div>
+      </article>
+      <article class="svc rv d1">
+        <div class="img"><img src="images/generated/service-grooming.webp" alt="A fluffy cream cat calmly enjoying a gentle brushing session" loading="lazy"><span class="tag">Certified groomer</span></div>
+        <div class="body">
+          <h3>Grooming</h3>
+          <div class="price"><small>from</small><b data-price="groom-basic"></b><small>/ session</small></div>
+          <ul>
+            <li>Handled by a certified professional cat groomer</li>
+            <li>Bath, blow-dry, brushing &amp; de-shedding</li>
+            <li>Nail trim, ear cleaning and sanitary trim</li>
+            <li>Gentle approach for shy or senior cats</li>
+            <li>Full groom package for long-haired breeds</li>
+          </ul>
+          <button class="btn btn-teal" data-book="grooming">Book grooming</button>
+        </div>
+      </article>
+      <article class="svc rv d2">
+        <div class="img"><img src="images/generated/service-daycare.webp" alt="Happy cats playing with a tunnel and feather toy during daycare" loading="lazy"><span class="tag">Day guests</span></div>
+        <div class="body">
+          <h3>Daycare</h3>
+          <div class="price"><small>from</small><b data-price="daycare"></b><small>/ day</small></div>
+          <ul>
+            <li>Drop off in the morning, pick up in the evening</li>
+            <li>Play hall access with cat trees, wheel &amp; tunnels</li>
+            <li>Ideal for renovation days, house guests or long work days</li>
+            <li>Own suite to nap in between play sessions</li>
+            <li>Add a groom and collect a fresh cat</li>
+          </ul>
+          <button class="btn btn-teal" data-book="daycare">Book daycare</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUITES ============ -->
+<section class="suites" id="suites">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The suites</span>
+      <h2>Handmade wooden suites, with room to stretch</h2>
+      <p class="lede">Solid rubberwood, black steel frames and clear panels so your cat can watch the world go by. Each suite rolls on castors so we can rearrange the space for shy guests or bonded pairs.</p>
+    </div>
+    <div class="grid">
+      <a class="cell big rv" href="images/generated/suite-wing.webp" data-lb><img src="images/generated/suite-wing.webp" alt="A bright boutique wing of roomy wooden suites with relaxed feline guests" loading="lazy"><span class="cap">The suite wing</span></a>
+      <a class="cell tall rv d1" href="images/generated/suite-inside.webp" data-lb><img src="images/generated/suite-inside.webp" alt="A calico cat stretching inside a spacious two-level private suite" loading="lazy"><span class="cap">Inside a suite</span></a>
+      <a class="cell rv d2" href="images/generated/suite-amenities.webp" data-lb><img src="images/generated/suite-amenities.webp" alt="A tuxedo cat beside separate clean litter and water areas in its suite" loading="lazy"><span class="cap">Own litter &amp; water</span></a>
+      <a class="cell rv d3" href="images/generated/suite-guest.webp" data-lb><img src="images/generated/suite-guest.webp" alt="A content ginger cat relaxing with toys and soft bedding in its suite" loading="lazy"><span class="cap">Guest in residence</span></a>
+    </div>
+    <div class="feat">
+      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg><b>Two-level layout</b><p>A raised resting shelf and a lower level for litter and water, so sleeping and toileting never mix.</p></div>
+      <div class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg><b>Mesh ventilation</b><p>Steel mesh panels keep the air moving while the clear front lets in natural light.</p></div>
+      <div class="rv d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14M2 19h20M8 3v16M16 3v16"/></svg><b>Play hall access</b><p>Scheduled free-roam sessions in the hall with cat trees, tunnels, scratchers and an exercise wheel.</p></div>
+      <div class="rv d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Daily housekeeping</b><p>Litter scooped, water refreshed and suites wiped down every day of the stay.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAILY CARE ============ -->
+<section class="daily-care" aria-labelledby="dailyCareTitle">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">The everyday details</span>
+      <h2 id="dailyCareTitle">Care that follows their rhythm</h2>
+      <p class="lede">Familiar routines make a stay feel safer. Pet Spa &amp; Hotel keeps feeding predictable, rest undisturbed and every guest's preferences close at hand.</p>
+    </div>
+    <div class="care-stack">
+      <article class="care-story rv" id="feeding">
+        <div class="care-visual">
+          <img src="images/generated/care-feeding.webp" alt="A silver tabby enjoying a carefully prepared meal with fresh water nearby" loading="lazy">
+          <div class="care-label"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h14l-1.5 9h-11z"/><path d="M8 10c0-3 1.8-5 4-5s4 2 4 5"/><path d="M12 2v3"/></svg></span>Meal routine</div>
+        </div>
+        <div class="care-copy">
+          <span class="eyebrow">Feeding</span>
+          <h2>Meals served the way they know them</h2>
+          <p class="lede">Bring their usual food and tell us the portions, timing and any special instructions. We keep every routine clear so even particular eaters feel at home.</p>
+          <div class="care-points">
+            <div class="care-point"><b>Familiar schedule</b><span>Morning, evening or custom meal times noted at check-in.</span></div>
+            <div class="care-point"><b>Separate setup</b><span>Individual bowls and feeding space inside each private suite.</span></div>
+            <div class="care-point"><b>Fresh water</b><span>Water is checked and refreshed throughout the day.</span></div>
+            <div class="care-point"><b>Special notes</b><span>Portions, supplements and medication instructions kept together.</span></div>
+          </div>
+          <a class="btn btn-teal" href="#book">Share a feeding routine</a>
+        </div>
+      </article>
+
+      <article class="care-story rest rv" id="rest">
+        <div class="care-visual">
+          <img src="images/generated/care-rest.webp" alt="A fluffy cream cat and ginger kitten sleeping together on a cosy raised bed" loading="lazy">
+          <div class="care-label"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A7.5 7.5 0 0 1 9.5 3.6 8.5 8.5 0 1 0 20.5 14.5z"/><path d="M17 4h.01M20 7h.01"/></svg></span>Quiet time</div>
+        </div>
+        <div class="care-copy">
+          <span class="eyebrow">Rest</span>
+          <h2>Cosy corners for uninterrupted naps</h2>
+          <p class="lede">After playtime, every cat can retreat to a calm private suite. Warm timber, soft bedding and a raised shelf create a quiet place to settle at their own pace.</p>
+          <div class="care-points">
+            <div class="care-point"><b>Private retreat</b><span>A personal suite away from the bustle of the play hall.</span></div>
+            <div class="care-point"><b>Raised resting shelf</b><span>A secure lookout for cats who relax best up high.</span></div>
+            <div class="care-point"><b>Soft bedding</b><span>Comfortable sleep zones kept apart from litter and water.</span></div>
+            <div class="care-point"><b>Calm pacing</b><span>Quiet guests are given time and space without forced interaction.</span></div>
+          </div>
+          <a class="btn btn-teal" href="#suites">Explore the suites</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">How it works</span>
+      <h2>Booked in under a minute</h2>
+      <p class="lede">No sign-ups, no forms to print. Everything happens on WhatsApp, the app you already use.</p>
+    </div>
+    <div class="grid">
+      <div class="step rv"><span class="n">01</span><b>Send your dates</b><p>Use the booking form below or tap any WhatsApp button. Tell us your cat's name, dates and the service you need.</p></div>
+      <div class="step rv d1"><span class="n">02</span><b>We confirm</b><p>We reply with availability, the rate and anything to bring, such as your cat's usual food and vaccination card.</p></div>
+      <div class="step rv d2"><span class="n">03</span><b>Check-in day</b><p>Drop your cat at our Kampung Pandan location. We settle them into their suite and give them time to explore.</p></div>
+      <div class="step rv d3"><span class="n">04</span><b>Enjoy your trip</b><p>Ask for photo updates any time. Add a grooming session and pick up a clean, calm, happy cat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Gallery</span>
+      <h2>Life at Pet Spa &amp; Hotel</h2>
+      <p class="lede">A few of our recent guests enjoying the play hall, the window seats and their suites.</p>
+    </div>
+    <div class="masonry rv">
+      <a href="images/web/siamese-wheel.jpg" data-lb><img src="images/web/siamese-wheel.jpg" alt="Siamese cat in front of the exercise wheel" loading="lazy"></a>
+      <a href="images/web/window-pair.jpg" data-lb><img src="images/web/window-pair.jpg" alt="Two cats watching the street from the window" loading="lazy"></a>
+      <a href="images/web/calico-rug.jpg" data-lb><img src="images/web/calico-rug.jpg" alt="Calico cat lounging on the geometric rug" loading="lazy"></a>
+      <a href="images/web/tuxedo.jpg" data-lb><img src="images/web/tuxedo.jpg" alt="Tuxedo cat sitting in front of the suites" loading="lazy"></a>
+      <a href="images/web/window-tree.jpg" data-lb><img src="images/web/window-tree.jpg" alt="Tabby cat exploring near the cat trees by the window" loading="lazy"></a>
+      <a href="images/web/white-condo.jpg" data-lb><img src="images/web/white-condo.jpg" alt="White cat stepping out of a cat condo" loading="lazy"></a>
+      <a href="images/web/lounge.jpg" data-lb><img src="images/web/lounge.jpg" alt="Owner lounge with benches and cat portraits" loading="lazy"></a>
+      <a href="images/web/fluffy-condo.jpg" data-lb><img src="images/web/fluffy-condo.jpg" alt="Fluffy cat standing by its water dispenser" loading="lazy"></a>
+      <a href="images/web/wheel-tabby.jpg" data-lb><img src="images/web/wheel-tabby.jpg" alt="Tabby cat looking through the exercise wheel" loading="lazy"></a>
+      <a href="images/web/tabby-tree.jpg" data-lb><img src="images/web/tabby-tree.jpg" alt="Tabby cat meowing under a cat tree" loading="lazy"></a>
+      <a href="images/web/entrance.jpg" data-lb><img src="images/web/entrance.jpg" alt="Cat hotel entrance with a glass door" loading="lazy"></a>
+      <a href="images/web/grey-suite.jpg" data-lb><img src="images/web/grey-suite.jpg" alt="Grey cat on the shelf of its suite" loading="lazy"></a>
+      <a href="images/web/walk-tabby.jpg" data-lb><img src="images/web/walk-tabby.jpg" alt="Tabby cat walking across the patterned floor" loading="lazy"></a>
+      <a href="images/web/door-logo.jpg" data-lb><img src="images/web/door-logo.jpg" alt="View through the glass door into the hotel" loading="lazy"></a>
+    </div>
+    <div class="ig-cta rv">
+      <a class="btn btn-outline" href="#book">
+        Plan your cat's stay
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews">
+  <div class="wrap grid">
+    <div class="rating-card rv">
+      <span class="big">4.9</span>
+      <span class="stars">★★★★★</span>
+      <small>Google rating · Cat hotel in Kuala Lumpur</small>
+      <span class="g"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5L6.4 10C7.2 7.8 9.4 6 12 6z"/></svg> Reviews on Google</span>
+      <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=3.144827966176431%2C101.74171596840188" target="_blank" rel="noopener">View on Google Maps</a>
+    </div>
+    <div class="rv d1">
+      <span class="eyebrow">Why cat parents trust us</span>
+      <h2 style="margin:12px 0 26px">Peace of mind, from drop-off to pick-up</h2>
+      <div class="why">
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><div><b>Treated like family</b><p>Small team, personal attention. We learn each cat's quirks, from the shy hider to the greedy eater.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div><b>Photo updates on WhatsApp</b><p>Ask any time and we'll send a picture of your cat, so you can relax wherever you are.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg></div><div><b>Clean, safe and cat-only</b><p>Vaccination cards checked at check-in, suites cleaned daily, and no dogs on the premises.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Easy to reach</b><p>Conveniently located in Kampung Pandan, close to central Kuala Lumpur with direct directions available below.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="booking" id="book">
+  <div class="wrap grid">
+    <div class="book-card rv">
+      <div>
+        <span class="eyebrow">Book now</span>
+        <h3 style="margin-top:10px">Reserve a suite via WhatsApp</h3>
+        <p style="color:var(--muted);font-size:.95rem;margin-top:6px">Fill this in and we'll open WhatsApp with your request ready to send. We reply with confirmation.</p>
+      </div>
+      <div class="seg" id="seg" role="tablist" aria-label="Service">
+        <button class="on" data-svc="hotel" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Hotel stay</button>
+        <button data-svc="daycare" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Daycare</button>
+        <button data-svc="grooming" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l12 12M6 15l12-12M4 21l4-4M16 21l4-4"/></svg>Grooming</button>
+      </div>
+      <form id="bookForm" novalidate>
+        <div style="display:grid;gap:14px">
+          <div class="row2">
+            <div class="field"><label for="ownerName">Your name</label><input id="ownerName" type="text" placeholder="e.g. Aina" autocomplete="name"></div>
+            <div class="field"><label for="catName">Cat's name(s)</label><input id="catName" type="text" placeholder="e.g. Oyen &amp; Tompok"></div>
+          </div>
+          <div class="row2">
+            <div class="field" id="fIn"><label for="dateIn" id="lblIn">Check-in</label><input id="dateIn" type="date"></div>
+            <div class="field" id="fOut"><label for="dateOut">Check-out</label><input id="dateOut" type="date"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="cats">Number of cats</label><select id="cats"><option value="1">1 cat</option><option value="2">2 cats</option><option value="3">3 cats</option><option value="4">4 cats</option></select></div>
+            <div class="field" id="fRoom"><label for="room">Suite type</label><select id="room"><option value="standard">Standard suite</option><option value="deluxe">Deluxe suite (larger)</option></select></div>
+            <div class="field" id="fGroom" hidden><label for="groomPkg">Grooming package</label><select id="groomPkg"><option value="basic">Basic groom</option><option value="full">Full groom (long hair)</option></select></div>
+          </div>
+          <div class="field" id="fAddon"><label style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600;color:var(--ink)"><input type="checkbox" id="addGroom" style="width:18px;height:18px;accent-color:var(--teal)"> Add a basic groom before pick-up</label></div>
+          <div class="field"><label for="notes">Notes (food, medication, temperament)</label><textarea id="notes" placeholder="e.g. Eats Royal Canin twice a day, a bit shy with strangers"></textarea></div>
+          <div class="estimate" id="estimate"></div>
+          <div class="preview-label"><i></i> WhatsApp message preview</div>
+          <div class="preview" id="preview"></div>
+          <button type="submit" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+            Send request on WhatsApp
+          </button>
+          <p class="fine">Opens WhatsApp to <b>+60 11-5812 1239</b>. Nothing is charged online; we confirm the final rate by reply.</p>
+          <div class="demo-split" aria-hidden="true">or try the demo</div>
+          <button type="button" class="btn btn-demo" id="demoSave">Save a demo reservation &amp; get a tracking code</button>
+          <p class="fine">Stored only in this browser, nothing is sent. Confirm it from the <button type="button" class="link-btn" data-desk="desk">front desk</button> and track the same code.</p>
+          <div class="ticket" id="ticket" hidden tabindex="-1"></div>
+        </div>
+      </form>
+    </div>
+    <div class="side">
+      <div class="rv d1">
+        <span class="eyebrow">Why WhatsApp?</span>
+        <h2 style="margin:12px 0 18px">Booking that fits how Malaysians actually chat</h2>
+        <div class="list">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Instant, no account needed</b><p>Your request lands directly in our inbox with every detail filled in. No typing it out twice.</p></div></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><div><b>Same thread for updates</b><p>Confirmation, photos during the stay and pick-up reminders all live in one chat.</p></div></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg><div><b>Clear price before you commit</b><p>The estimate on the left updates live. We confirm the final amount before check-in.</p></div></div>
+        </div>
+      </div>
+      <div class="phone-mock rv d2" aria-hidden="true">
+        <div class="hdr"><span class="av">PS</span><div>Pet Spa &amp; Hotel<small>● typically replies within the hour</small></div></div>
+        <div class="bubble me">Hi Pet Spa &amp; Hotel! Booking request: Hotel stay for Oyen, 2 nights, Standard suite…</div>
+        <div class="bubble">Hi Aina! Yes, a suite is available for those dates 😺 Please bring Oyen's usual food and vaccination card. See you at 10am!</div>
+        <div class="bubble me">Perfect, thank you! 🙏</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Good to know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="grid rv">
+      <details open><summary>What should I bring at check-in?</summary><p>Your cat's usual food (enough for the stay plus a day), their vaccination card, and anything that smells like home, such as a small blanket or toy. We provide litter, bowls, water dispensers and bedding.</p></details>
+      <details><summary>Does my cat need to be vaccinated?</summary><p>Yes. For the safety of every guest we ask that cats are up to date on their core vaccinations and free from fleas. Please mention any medical conditions in the notes when booking.</p></details>
+      <details><summary>Can two cats from the same home share a suite?</summary><p>Bonded cats can usually share a suite or be placed in adjoining suites. Let us know when you book and we will recommend the best arrangement.</p></details>
+      <details><summary>Will my cat get time outside the suite?</summary><p>Yes. Every guest has supervised free-roam time in the play hall, with cat trees, tunnels, scratchers and the exercise wheel. Shy cats are given their own quiet sessions.</p></details>
+      <details><summary>Can I get updates while I am away?</summary><p>Of course. Just ask in the WhatsApp chat and we will send a photo or short video of your cat.</p></details>
+      <details><summary>What are the drop-off and pick-up times?</summary><p>We arrange drop-off and pick-up by appointment on WhatsApp so there is always someone ready to welcome your cat. Tell us your preferred time when you book.</p></details>
+      <details><summary>Do you groom cats that are not staying at the hotel?</summary><p>Yes. Grooming is open to walk-in guests by appointment. Our groomer is a certified professional cat groomer and is experienced with nervous and long-haired cats.</p></details>
+      <details><summary>How do I pay?</summary><p>Payment is made at the hotel on check-in or pick-up. We will confirm the total on WhatsApp before your arrival so there are no surprises.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="location" id="location">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="eyebrow">Find us</span>
+      <h2 style="margin-top:12px">Kampung Pandan, Kuala Lumpur</h2>
+      <p class="lede" style="margin-top:14px">Visit Pet Spa &amp; Hotel in Kampung Pandan. Use the map for the exact location and turn-by-turn directions.</p>
+      <div class="contact-list">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=3.144827966176431%2C101.74171596840188" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Address</b><span>Niagova, Kampung Pandan,<br>55100 Kuala Lumpur</span></div></a>
+        <a href="tel:+601158121239"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2.2z"/></svg></div><div><b>Phone / WhatsApp</b><span>+60 11-5812 1239</span></div></a>
+        <a href="mailto:sales@niagova.com"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>Email</b><span>sales@niagova.com</span></div></a>
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Hours</b><span>Drop-off &amp; pick-up by appointment, daily.<br>WhatsApp us for same-day enquiries.</span></div></div>
+      </div>
+      <div class="socials">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=3.144827966176431%2C101.74171596840188" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+        <a href="#" class="wa-link" data-msg="Hi Pet Spa &amp; Hotel! I have a question." aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg></a>
+      </div>
+    </div>
+    <div class="map rv d1">
+      <iframe title="Map to Pet Spa &amp; Hotel in Kampung Pandan, Kuala Lumpur" src="https://www.google.com/maps?q=3.144827966176431,101.74171596840188&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <a class="btn btn-teal open" href="https://www.google.com/maps/dir/?api=1&amp;destination=3.144827966176431%2C101.74171596840188" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <img src="images/web/hall-cats.jpg" alt="" loading="lazy">
+  <div class="wrap rv">
+    <span class="eyebrow" style="color:#FFD9A8">Ready when you are</span>
+    <h2>Give your cat a holiday too.</h2>
+    <p>Check availability for your dates in one tap. We'll reply on WhatsApp with confirmation and what to bring.</p>
+    <a class="btn btn-wa wa-link" href="#" data-msg="Hi Pet Spa &amp; Hotel! I'd like to check availability for my cat.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+      WhatsApp +60 11-5812 1239
+    </a>
+  </div>
+</section>
+
+<section class="mybizgate-cta" id="mybizgate" aria-labelledby="mybizgate-title">
+  <div class="wrap mybizgate-panel">
+    <div><span class="eyebrow">Website by Niagova</span><h2 id="mybizgate-title">Want a website your customers can trust?</h2><p>Niagova creates professional Malaysian business websites with service and package pages, enquiry or booking flows, WhatsApp handoff, review sections and managed support.</p><div class="mybizgate-services"><span>Professional website</span><span>Lead and booking flow</span><span>Managed yearly support</span></div></div>
+    <a class="btn btn-teal" href="https://niagova.com/" target="_blank" rel="noopener">View Niagova packages →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#2F7F93"/><path fill="#fff" d="M18 46c0-9 5-17 14-17s14 8 14 17H18zM20 25l8 5-4 6zM44 25l-8 5 4 6z"/></svg></span><span>Pet Spa &amp; Hotel<small>Cat boarding &amp; care</small></span></a>
+    <nav><a href="#services">Services</a><a href="#suites">Suites</a><a href="#feeding">Feeding</a><a href="#rest">Rest</a><a href="#book">Book</a><a href="#location">Find us</a><a href="#" data-desk="track">Track</a><a href="#" data-desk="desk">Front desk</a></nav>
+    <span>© <span id="year"></span> Pet Spa &amp; Hotel · Niagova, Kampung Pandan, 55100 Kuala Lumpur</span>
+  </div>
+</footer>
+
+<button class="mini-fab" id="contactFab" type="button" aria-label="Open quick contact options" aria-controls="contactDrawer" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.7 10.2A2.2 2.2 0 1 0 5.5 8a2.2 2.2 0 0 0 2.2 2.2Zm8.6 0A2.2 2.2 0 1 0 14.1 8a2.2 2.2 0 0 0 2.2 2.2ZM5.2 15.7A2.2 2.2 0 1 0 3 13.5a2.2 2.2 0 0 0 2.2 2.2Zm13.6 0a2.2 2.2 0 1 0-2.2-2.2 2.2 2.2 0 0 0 2.2 2.2Zm-6.8 5.1c2.9 0 5.1-1.5 5.1-3.5 0-1.5-1.2-2.7-2.7-3.4-.7-.3-1.1-.8-1.2-1.5l-.1-.4c-.2-.9-1-1.5-2-1.5s-1.8.6-2 1.5l-.1.4c-.1.7-.5 1.2-1.2 1.5-1.5.6-2.7 1.9-2.7 3.4 0 2 2.2 3.5 5.1 3.5Z"/></svg>
+</button>
+<aside class="mini-drawer" id="contactDrawer" aria-hidden="true" aria-labelledby="contactDrawerTitle">
+  <h2 id="contactDrawerTitle">Quick contact</h2>
+  <p>Ask a question, call the team or jump straight to your booking.</p>
+  <div class="mini-actions">
+    <a href="#" class="wa-link drawer-close" data-msg="Hi Pet Spa &amp; Hotel! I'd like to ask about a stay.">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg></span>
+      <span>WhatsApp Pet Spa &amp; Hotel<small>Start an enquiry</small></span>
+    </a>
+    <a href="tel:+601158121239" class="drawer-close">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2.2z"/></svg></span>
+      <span>Call the team<small>+60 11-5812 1239</small></span>
+    </a>
+    <a href="mailto:sales@niagova.com" class="drawer-close">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+      <span>Email us<small>General questions</small></span>
+    </a>
+    <a href="#book" class="drawer-close">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 15l2 2 4-4"/></svg></span>
+      <span>Start a booking<small>Prepare a WhatsApp request</small></span>
+    </a>
+    <a href="#" class="drawer-close" data-desk="track">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v3l2 1"/></svg></span>
+      <span>Track a reservation<small>Check a demo booking status</small></span>
+    </a>
+  </div>
+</aside>
+
+<div class="desk-backdrop" id="deskBackdrop"></div>
+<aside class="desk" id="desk" role="dialog" aria-modal="true" aria-labelledby="deskTitle" aria-hidden="true">
+  <div class="desk-head">
+    <div>
+      <span class="eyebrow">Reservation desk</span>
+      <h2 id="deskTitle">Track your cat's stay</h2>
+      <p>Demo reservations live only in this browser. Nothing here is sent to Pet Spa &amp; Hotel.</p>
+    </div>
+    <button class="x" id="deskClose" type="button" aria-label="Close reservation desk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="desk-tabs" role="tablist" aria-label="Reservation desk views">
+    <button type="button" role="tab" id="tabTrack" aria-selected="true" aria-controls="panelTrack" data-tab="track">Track a reservation</button>
+    <button type="button" role="tab" id="tabDesk" aria-selected="false" aria-controls="panelDesk" data-tab="desk" tabindex="-1">Front desk</button>
+  </div>
+  <div class="desk-body">
+    <div role="tabpanel" id="panelTrack" aria-labelledby="tabTrack">
+      <div class="ref-input">
+        <input id="refInput" placeholder="Tracking code, e.g. PGX-7K2M9Q" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Tracking code">
+        <button class="btn btn-wood" id="refGo" type="button">Find</button>
+      </div>
+      <div class="recent" id="recentRefs" hidden></div>
+      <div id="trackResult" aria-live="polite"></div>
+      <p class="hint">Save a demo reservation from the booking form to get a code. Confirm it under Front desk and watch the timeline update.</p>
+    </div>
+    <div role="tabpanel" id="panelDesk" aria-labelledby="tabDesk" hidden>
+      <div class="desk-stats" aria-live="polite">
+        <div><b id="dsPending">0</b><span>Pending</span></div>
+        <div><b id="dsConfirmed">0</b><span>Confirmed</span></div>
+        <div><b id="dsRevenue">RM 0</b><span>Confirmed value</span></div>
+      </div>
+      <div class="desk-tools">
+        <button type="button" id="dsSeed">Add sample stays</button>
+        <button type="button" id="dsClear">Clear demo data</button>
+      </div>
+      <div class="desk-list" id="deskList"></div>
+    </div>
+  </div>
+</aside>
+<div class="desk-toast" id="deskToast" role="status" aria-live="polite"></div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+  <button class="x" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <img id="lbImg" src="" alt="">
+  <button class="next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — the only block the business owner needs to edit.
+   Rates below are indicative placeholders for the prototype;
+   replace with the hotel's real price list.
+   ============================================================ */
+const CONFIG = {
+  whatsapp: "601158121239",          // +60 11-5812 1239, international format, digits only
+  currency: "RM",
+  prices: {
+    "hotel-standard": 25,            // per night
+    "hotel-deluxe":   35,            // per night
+    "daycare":        20,            // per day
+    "groom-basic":    45,            // per session
+    "groom-full":     80             // per session (long-haired / full package)
+  },
+  multiCatDiscount: 0.10             // 10% off the 2nd cat onwards (hotel & daycare)
+};
+
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const fmt = n => `${CONFIG.currency} ${n.toFixed(0)}`;
+
+/* Fill price labels in the service cards */
+$$("[data-price]").forEach(el => el.textContent = fmt(CONFIG.prices[el.dataset.price]));
+$("#year").textContent = new Date().getFullYear();
+
+/* Generic WhatsApp links */
+const waUrl = msg => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+$$(".wa-link").forEach(a => {
+  a.href = waUrl(a.dataset.msg || "Hi Pet Spa & Hotel!");
+  a.target = "_blank"; a.rel = "noopener";
+});
+
+/* Nav */
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("solid", window.scrollY > 40);
+onScroll(); addEventListener("scroll", onScroll, {passive:true});
+addEventListener("load", onScroll, {once:true});
+const menu = $("#mobileMenu");
+$("#burger").onclick = () => { menu.classList.add("open"); document.body.style.overflow = "hidden"; };
+const closeMenu = () => { menu.classList.remove("open"); document.body.style.overflow = ""; };
+$("#closeMenu").onclick = closeMenu;
+$$("#mobileMenu a").forEach(a => a.addEventListener("click", closeMenu));
+
+/* Hero carousel */
+const heroSlides = $$("#heroMedia img"), heroDots = $("#heroDots");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let heroIndex = 0, heroTimer;
+const showHero = index => {
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  heroSlides.forEach((slide, i) => slide.classList.toggle("is-active", i === heroIndex));
+  $$(`button`, heroDots).forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === heroIndex);
+    dot.setAttribute("aria-pressed", String(i === heroIndex));
+  });
+};
+const startHero = () => {
+  clearInterval(heroTimer);
+  if (!reduceMotion && !document.hidden && heroSlides.length > 1) {
+    heroTimer = setInterval(() => showHero(heroIndex + 1), 6500);
+  }
+};
+heroSlides.forEach((_, i) => {
+  const dot = document.createElement("button");
+  dot.type = "button";
+  dot.setAttribute("aria-label", `Show hero image ${i + 1} of ${heroSlides.length}`);
+  dot.addEventListener("click", () => { showHero(i); startHero(); });
+  heroDots.append(dot);
+});
+showHero(0);
+startHero();
+document.addEventListener("visibilitychange", startHero);
+
+/* Quick contact drawer */
+const contactFab = $("#contactFab"), contactDrawer = $("#contactDrawer");
+const setContactOpen = open => {
+  contactDrawer.classList.toggle("open", open);
+  contactDrawer.setAttribute("aria-hidden", String(!open));
+  contactFab.setAttribute("aria-expanded", String(open));
+  contactFab.setAttribute("aria-label", open ? "Close quick contact options" : "Open quick contact options");
+};
+contactFab.addEventListener("click", () => setContactOpen(!contactDrawer.classList.contains("open")));
+document.addEventListener("click", e => {
+  if (!contactDrawer.contains(e.target) && !contactFab.contains(e.target)) setContactOpen(false);
+});
+$$("#contactDrawer .drawer-close").forEach(a => a.addEventListener("click", () => setContactOpen(false)));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && contactDrawer.classList.contains("open")) {
+    setContactOpen(false);
+    contactFab.focus();
+  }
+});
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+$$(".rv").forEach(el => io.observe(el));
+
+/* Lightbox */
+const lbLinks = $$("[data-lb]"), lb = $("#lightbox"), lbImg = $("#lbImg");
+let lbI = 0;
+const showLb = i => { lbI = (i + lbLinks.length) % lbLinks.length; lbImg.src = lbLinks[lbI].href; lbImg.alt = lbLinks[lbI].querySelector("img").alt; lb.classList.add("open"); document.body.style.overflow = "hidden"; };
+const hideLb = () => { lb.classList.remove("open"); document.body.style.overflow = ""; };
+lbLinks.forEach((a, i) => a.addEventListener("click", e => { e.preventDefault(); showLb(i); }));
+$("#lbClose").onclick = hideLb; $("#lbPrev").onclick = () => showLb(lbI-1); $("#lbNext").onclick = () => showLb(lbI+1);
+lb.addEventListener("click", e => { if (e.target === lb) hideLb(); });
+addEventListener("keydown", e => { if (!lb.classList.contains("open")) return; if (e.key === "Escape") hideLb(); if (e.key === "ArrowLeft") showLb(lbI-1); if (e.key === "ArrowRight") showLb(lbI+1); });
+
+/* ============================================================
+   Booking form → WhatsApp
+   ============================================================ */
+const form = $("#bookForm"), seg = $("#seg");
+const f = {
+  owner: $("#ownerName"), cat: $("#catName"), dateIn: $("#dateIn"), dateOut: $("#dateOut"),
+  cats: $("#cats"), room: $("#room"), groomPkg: $("#groomPkg"), addGroom: $("#addGroom"), notes: $("#notes")
+};
+let svc = "hotel";
+const today = new Date(); const iso = d => d.toISOString().slice(0,10);
+f.dateIn.min = iso(today); f.dateOut.min = iso(today);
+
+function setService(s){
+  svc = s;
+  $$("#seg button").forEach(b => b.classList.toggle("on", b.dataset.svc === s));
+  $("#fOut").hidden = s !== "hotel";
+  $("#fRoom").hidden = s !== "hotel";
+  $("#fGroom").hidden = s !== "grooming";
+  $("#fAddon").hidden = s === "grooming";
+  $("#lblIn").textContent = s === "hotel" ? "Check-in" : s === "daycare" ? "Daycare date" : "Appointment date";
+  update();
+}
+seg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setService(b.dataset.svc); });
+$$("[data-book]").forEach(b => b.addEventListener("click", () => { setService(b.dataset.book); $("#book").scrollIntoView({behavior:"smooth"}); }));
+
+const nights = () => { const a = new Date(f.dateIn.value), b = new Date(f.dateOut.value); const n = Math.round((b - a) / 86400000); return isFinite(n) && n > 0 ? n : 0; };
+const niceDate = v => v ? new Date(v + "T00:00").toLocaleDateString("en-MY", {weekday:"short", day:"numeric", month:"short", year:"numeric"}) : "—";
+
+function calc(){
+  const n = +f.cats.value, lines = []; let total = 0;
+  const multi = cats => cats === 1 ? 1 : 1 + (cats - 1) * (1 - CONFIG.multiCatDiscount);
+  if (svc === "hotel"){
+    const nt = nights(), rate = CONFIG.prices["hotel-" + f.room.value];
+    const sub = rate * nt * multi(n);
+    lines.push([`${f.room.value === "deluxe" ? "Deluxe" : "Standard"} suite × ${nt || 0} night${nt === 1 ? "" : "s"} × ${n} cat${n > 1 ? "s" : ""}`, sub]);
+    total += sub;
+    if (f.addGroom.checked){ const g = CONFIG.prices["groom-basic"] * n; lines.push([`Basic groom × ${n}`, g]); total += g; }
+  } else if (svc === "daycare"){
+    const sub = CONFIG.prices.daycare * multi(n);
+    lines.push([`Daycare × 1 day × ${n} cat${n > 1 ? "s" : ""}`, sub]); total += sub;
+    if (f.addGroom.checked){ const g = CONFIG.prices["groom-basic"] * n; lines.push([`Basic groom × ${n}`, g]); total += g; }
+  } else {
+    const key = "groom-" + f.groomPkg.value, sub = CONFIG.prices[key] * n;
+    lines.push([`${f.groomPkg.value === "full" ? "Full" : "Basic"} groom × ${n} cat${n > 1 ? "s" : ""}`, sub]); total += sub;
+  }
+  return {lines, total, discounted: n > 1 && svc !== "grooming"};
+}
+
+function message(){
+  const svcName = {hotel:"Hotel stay (boarding)", daycare:"Daycare", grooming:"Grooming"}[svc];
+  const {total} = calc();
+  const L = [`Hi Pet Spa & Hotel! I'd like to make a booking 🐾`, ``, `*Service:* ${svcName}`];
+  if (svc === "hotel"){
+    L.push(`*Check-in:* ${niceDate(f.dateIn.value)}`, `*Check-out:* ${niceDate(f.dateOut.value)} (${nights()} night${nights() === 1 ? "" : "s"})`, `*Suite:* ${f.room.value === "deluxe" ? "Deluxe" : "Standard"}`);
+  } else {
+    L.push(`*Date:* ${niceDate(f.dateIn.value)}`);
+    if (svc === "grooming") L.push(`*Package:* ${f.groomPkg.value === "full" ? "Full groom" : "Basic groom"}`);
+  }
+  if (svc !== "grooming" && f.addGroom.checked) L.push(`*Add-on:* Basic groom before pick-up`);
+  L.push(`*Cats:* ${f.cats.value} — ${f.cat.value.trim() || "(name)"}`, `*Owner:* ${f.owner.value.trim() || "(your name)"}`);
+  if (f.notes.value.trim()) L.push(`*Notes:* ${f.notes.value.trim()}`);
+  L.push(``, `Estimated total from website: ${fmt(total)}`, `Please confirm availability. Thank you!`);
+  return L.join("\n");
+}
+
+function update(){
+  const {lines, total, discounted} = calc();
+  $("#estimate").innerHTML = lines.map(([l, v]) => `<div class="line"><span>${l}</span><span>${fmt(v)}</span></div>`).join("")
+    + `<div class="total"><span>Estimated total</span><b>${fmt(total)}</b></div>`
+    + `<small>${discounted ? `Includes ${CONFIG.multiCatDiscount*100}% off for additional cats. ` : ""}Indicative only — final rate confirmed on WhatsApp.</small>`;
+  $("#preview").textContent = message();
+}
+Object.values(f).forEach(el => el.addEventListener("input", update));
+f.dateIn.addEventListener("change", () => { f.dateOut.min = f.dateIn.value; if (f.dateOut.value && f.dateOut.value <= f.dateIn.value){ const d = new Date(f.dateIn.value); d.setDate(d.getDate()+1); f.dateOut.value = iso(d); } update(); });
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const missing = [];
+  if (!f.dateIn.value) missing.push(f.dateIn);
+  if (svc === "hotel" && !nights()) missing.push(f.dateOut);
+  if (!f.owner.value.trim()) missing.push(f.owner);
+  missing.forEach(el => { el.style.borderColor = "#d9534f"; el.addEventListener("input", () => el.style.borderColor = "", {once:true}); });
+  if (missing.length){ missing[0].focus(); return; }
+  window.open(waUrl(message()), "_blank", "noopener");
+});
+
+/* Sensible defaults so the preview is never empty */
+(() => { const a = new Date(); a.setDate(a.getDate()+3); const b = new Date(a); b.setDate(b.getDate()+2); f.dateIn.value = iso(a); f.dateOut.value = iso(b); })();
+setService("hotel");
+
+/* ============================================================
+   Reservation desk — demo bookings stored only in this browser
+   ============================================================ */
+const DESK_KEY = "cathotel_premium_reservations_v1", RECENT_KEY = "cathotel_premium_recent_codes_v1";
+const desk = $("#desk"), deskBackdrop = $("#deskBackdrop"), deskToast = $("#deskToast");
+const refInput = $("#refInput"), trackResult = $("#trackResult"), recentRefs = $("#recentRefs");
+let deskTrigger = null, deskToastTimer, clearArmTimer;
+
+const esc = v => String(v).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const readJson = (key) => { try { const v = JSON.parse(localStorage.getItem(key) || "[]"); return Array.isArray(v) ? v : []; } catch { return []; } };
+const loadRes = () => readJson(DESK_KEY);
+const saveRes = list => { try { localStorage.setItem(DESK_KEY, JSON.stringify(list)); return true; } catch { toast("Browser storage is unavailable, so the demo cannot save."); return false; } };
+const makeCode = () => {
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let out = "";
+  const bytes = (crypto && crypto.getRandomValues) ? crypto.getRandomValues(new Uint8Array(6)) : Array.from({length:6}, () => Math.floor(Math.random()*256));
+  for (const b of bytes) out += alphabet[b % alphabet.length];
+  return "PGX-" + out;
+};
+const normCode = v => { let c = v.trim().toUpperCase().replace(/\s+/g, ""); if (c && !c.startsWith("PGX-")) c = "PGX-" + c.replace(/^PGX/, ""); return c; };
+const statusText = s => ({pending:"Awaiting confirmation", confirmed:"Confirmed", declined:"Declined"}[s] || s);
+const svcLabel = s => ({hotel:"Hotel stay", daycare:"Daycare", grooming:"Grooming"}[s] || s);
+const whenText = r => r.service === "hotel"
+  ? `${niceDate(r.dateIn)} → ${niceDate(r.dateOut)} · ${r.nights} night${r.nights === 1 ? "" : "s"}`
+  : niceDate(r.dateIn);
+const detailText = r => {
+  const bits = [svcLabel(r.service)];
+  if (r.service === "hotel") bits.push(r.room === "deluxe" ? "Deluxe suite" : "Standard suite");
+  if (r.service === "grooming") bits.push(r.groomPkg === "full" ? "Full groom" : "Basic groom");
+  else if (r.addGroom) bits.push("+ basic groom");
+  bits.push(`${r.cats} cat${r.cats > 1 ? "s" : ""}`);
+  return bits.join(" · ");
+};
+const timeText = t => new Date(t).toLocaleString("en-MY", {day:"numeric", month:"short", hour:"numeric", minute:"2-digit"});
+
+function toast(msg){
+  clearTimeout(deskToastTimer);
+  deskToast.textContent = msg; deskToast.classList.add("show");
+  deskToastTimer = setTimeout(() => deskToast.classList.remove("show"), 2800);
+}
+
+/* Open / close the side panel */
+function openDesk(tab = "track", code){
+  deskTrigger = document.activeElement;
+  setContactOpen(false); closeMenu();
+  desk.classList.add("open"); deskBackdrop.classList.add("open");
+  desk.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  setDeskTab(tab);
+  renderDesk();
+  if (code){ refInput.value = code; trackCode(code); }
+  setTimeout(() => (tab === "track" ? refInput : $("#tabDesk")).focus({preventScroll:true}), 60);
+}
+function closeDesk(){
+  if (!desk.classList.contains("open")) return;
+  desk.classList.remove("open"); deskBackdrop.classList.remove("open");
+  desk.setAttribute("aria-hidden", "true");
+  if (!lb.classList.contains("open") && !menu.classList.contains("open")) document.body.style.overflow = "";
+  if (deskTrigger && typeof deskTrigger.focus === "function") deskTrigger.focus({preventScroll:true});
+}
+function setDeskTab(tab){
+  $$(".desk-tabs button").forEach(b => {
+    const on = b.dataset.tab === tab;
+    b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1;
+  });
+  $("#panelTrack").hidden = tab !== "track";
+  $("#panelDesk").hidden = tab !== "desk";
+}
+$$("[data-desk]").forEach(el => el.addEventListener("click", e => { e.preventDefault(); openDesk(el.dataset.desk); }));
+$("#deskClose").addEventListener("click", closeDesk);
+deskBackdrop.addEventListener("click", closeDesk);
+$$(".desk-tabs button").forEach(b => b.addEventListener("click", () => { setDeskTab(b.dataset.tab); b.focus(); }));
+$(".desk-tabs").addEventListener("keydown", e => {
+  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+  const tabs = $$(".desk-tabs button"), i = tabs.findIndex(b => b.getAttribute("aria-selected") === "true");
+  const next = tabs[(i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+  setDeskTab(next.dataset.tab); next.focus();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && desk.classList.contains("open")) closeDesk(); });
+
+/* Track a code */
+function trackCode(raw){
+  const code = normCode(raw == null ? refInput.value : raw);
+  refInput.value = code;
+  if (!code){ trackResult.innerHTML = '<div class="track-empty">Enter the tracking code printed on your demo reservation ticket.</div>'; return; }
+  const r = loadRes().find(x => x.id === code);
+  if (!r){
+    trackResult.innerHTML = `<div class="track-empty">No reservation with code <b>${esc(code)}</b> exists in this browser. Save a demo reservation from the booking form first, or pick a recent code above.</div>`;
+    return;
+  }
+  const steps = [
+    {cls:"done", icon:"✓", title:"Request received", sub:`Saved ${timeText(r.createdAt)} from the website form`},
+    r.status === "pending"
+      ? {cls:"now", icon:"2", title:"Front desk is reviewing", sub:"We check suite availability and reply on WhatsApp"}
+      : {cls:"done", icon:"✓", title:"Reviewed by the front desk", sub:r.updatedAt ? `Reviewed ${timeText(r.updatedAt)}` : "Reviewed"},
+    r.status === "confirmed"
+      ? {cls:"done", icon:"✓", title:"Confirmed — see you at check-in", sub:`Please bring ${esc(r.cat)}'s usual food and vaccination card`}
+      : r.status === "declined"
+        ? {cls:"bad", icon:"!", title:"Unable to confirm these dates", sub:"Message us on WhatsApp for alternative dates"}
+        : {cls:"todo", icon:"3", title:"Confirmation", sub:"You'll get a reply with the final rate"}
+  ];
+  trackResult.innerHTML = `<article class="track-card">
+    <div class="top"><div><div class="ref">${esc(r.id)}</div><h3>${esc(r.cat)}</h3></div><span class="badge ${esc(r.status)}">${statusText(r.status)}</span></div>
+    <div class="meta">${esc(detailText(r))}<br>${esc(whenText(r))}<br>Estimated ${fmt(r.total)} · booked by ${esc(r.owner)}</div>
+    <ol class="timeline">${steps.map(s => `<li class="${s.cls}"><i aria-hidden="true">${s.icon}</i><div><b>${s.title}</b><span>${s.sub}</span></div></li>`).join("")}</ol>
+  </article>`;
+}
+$("#refGo").addEventListener("click", () => trackCode());
+refInput.addEventListener("keydown", e => { if (e.key === "Enter"){ e.preventDefault(); trackCode(); } });
+
+function rememberCode(code){
+  const list = [code, ...readJson(RECENT_KEY).filter(c => c !== code)].slice(0, 4);
+  try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch {}
+}
+function renderRecent(){
+  const existing = new Set(loadRes().map(r => r.id));
+  const list = readJson(RECENT_KEY).filter(c => existing.has(c));
+  recentRefs.hidden = !list.length;
+  recentRefs.innerHTML = list.length ? `<span>Recent</span>` + list.map(c => `<button type="button" data-code="${esc(c)}">${esc(c)}</button>`).join("") : "";
+}
+recentRefs.addEventListener("click", e => { const b = e.target.closest("button[data-code]"); if (b) trackCode(b.dataset.code); });
+
+/* Front desk: review, confirm, decline */
+function renderDesk(){
+  const list = loadRes();
+  $("#dsPending").textContent = list.filter(r => r.status === "pending").length;
+  $("#dsConfirmed").textContent = list.filter(r => r.status === "confirmed").length;
+  $("#dsRevenue").textContent = fmt(list.filter(r => r.status === "confirmed").reduce((s, r) => s + r.total, 0));
+  $("#deskList").innerHTML = list.length
+    ? list.slice().reverse().map(r => `<article class="res-row">
+        <header><b>${esc(r.cat)}</b><span class="badge ${esc(r.status)}">${statusText(r.status)}</span></header>
+        <div class="ref">${esc(r.id)}</div>
+        <div class="meta">${esc(detailText(r))}<br>${esc(whenText(r))}<br>${fmt(r.total)} · ${esc(r.owner)}${r.notes ? `<br>“${esc(r.notes)}”` : ""}</div>
+        ${r.status === "pending" ? `<div class="acts"><button type="button" class="ok" data-set="confirmed" data-id="${esc(r.id)}">Confirm</button><button type="button" class="no" data-set="declined" data-id="${esc(r.id)}">Decline</button></div>` : ""}
+      </article>`).join("")
+    : '<div class="track-empty">No demo reservations yet. Save one from the booking form, or add sample stays.</div>';
+  renderRecent();
+}
+$("#deskList").addEventListener("click", e => {
+  const b = e.target.closest("button[data-set]"); if (!b) return;
+  const list = loadRes(), r = list.find(x => x.id === b.dataset.id);
+  if (!r || r.status !== "pending") return;
+  r.status = b.dataset.set; r.updatedAt = new Date().toISOString();
+  if (!saveRes(list)) return;
+  renderDesk();
+  if (refInput.value) trackCode();
+  toast(`${r.cat}'s stay is now ${statusText(r.status).toLowerCase()}.`);
+});
+$("#dsSeed").addEventListener("click", () => {
+  const plus = n => { const d = new Date(); d.setDate(d.getDate() + n); return iso(d); };
+  const samples = [
+    {cat:"Oyen", owner:"Aina", service:"hotel", room:"standard", cats:1, dateIn:plus(2), dateOut:plus(4), nights:2, addGroom:false, status:"pending", notes:"Eats Royal Canin twice a day"},
+    {cat:"Tompok & Luna", owner:"Daniel", service:"hotel", room:"deluxe", cats:2, dateIn:plus(5), dateOut:plus(8), nights:3, addGroom:true, status:"confirmed", notes:""},
+    {cat:"Mochi", owner:"Siti", service:"grooming", groomPkg:"full", cats:1, dateIn:plus(1), dateOut:"", nights:0, addGroom:false, status:"pending", notes:"Long-haired, a little shy"}
+  ].map(s => {
+    const multi = s.cats === 1 ? 1 : 1 + (s.cats - 1) * (1 - CONFIG.multiCatDiscount);
+    let total = s.service === "hotel" ? CONFIG.prices["hotel-" + s.room] * s.nights * multi
+      : s.service === "daycare" ? CONFIG.prices.daycare * multi
+      : CONFIG.prices["groom-" + s.groomPkg] * s.cats;
+    if (s.service !== "grooming" && s.addGroom) total += CONFIG.prices["groom-basic"] * s.cats;
+    const now = new Date().toISOString();
+    return {id:makeCode(), ...s, total:Math.round(total), createdAt:now, updatedAt:s.status === "pending" ? "" : now};
+  });
+  if (!saveRes([...loadRes(), ...samples])) return;
+  samples.forEach(s => rememberCode(s.id));
+  renderDesk(); toast("Three sample stays added.");
+});
+$("#dsClear").addEventListener("click", () => {
+  const b = $("#dsClear");
+  if (!b.classList.contains("arm")){
+    b.classList.add("arm"); b.textContent = "Tap again to clear";
+    clearArmTimer = setTimeout(() => { b.classList.remove("arm"); b.textContent = "Clear demo data"; }, 4000);
+    return;
+  }
+  clearTimeout(clearArmTimer); b.classList.remove("arm"); b.textContent = "Clear demo data";
+  saveRes([]); try { localStorage.removeItem(RECENT_KEY); } catch {}
+  refInput.value = ""; trackResult.innerHTML = ""; $("#ticket").hidden = true;
+  renderDesk(); toast("Demo reservations cleared.");
+});
+
+/* Save the booking form as a demo reservation */
+$("#demoSave").addEventListener("click", () => {
+  const missing = [];
+  if (!f.owner.value.trim()) missing.push(f.owner);
+  if (!f.cat.value.trim()) missing.push(f.cat);
+  if (!f.dateIn.value || f.dateIn.value < iso(new Date())) missing.push(f.dateIn);
+  if (svc === "hotel" && !nights()) missing.push(f.dateOut);
+  missing.forEach(el => { el.style.borderColor = "#d9534f"; el.addEventListener("input", () => el.style.borderColor = "", {once:true}); });
+  if (missing.length){ missing[0].focus(); toast("Add your name, your cat's name and valid dates first."); return; }
+  const r = {
+    id: makeCode(), service: svc, owner: f.owner.value.trim(), cat: f.cat.value.trim(), cats: +f.cats.value,
+    dateIn: f.dateIn.value, dateOut: svc === "hotel" ? f.dateOut.value : "", nights: svc === "hotel" ? nights() : 0,
+    room: f.room.value, groomPkg: f.groomPkg.value, addGroom: svc !== "grooming" && f.addGroom.checked,
+    notes: f.notes.value.trim(), total: Math.round(calc().total), status: "pending", createdAt: new Date().toISOString(), updatedAt: ""
+  };
+  if (!saveRes([...loadRes(), r])) return;
+  rememberCode(r.id);
+  const t = $("#ticket");
+  t.innerHTML = `<span class="eyebrow">Demo reservation ticket</span>
+    <div class="code" id="ticketCode">${esc(r.id)}</div>
+    <p><b>${esc(r.cat)}</b> · ${esc(detailText(r))}<br>${esc(whenText(r))} · ${fmt(r.total)}</p>
+    <p>Status: awaiting confirmation. Keep this code to follow the stay.</p>
+    <div class="acts"><button type="button" class="copy" id="ticketCopy">Copy code</button><button type="button" class="go" data-desk-code="${esc(r.id)}">Track this reservation</button></div>`;
+  t.hidden = false; t.focus({preventScroll:true});
+  t.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"nearest"});
+  toast("Demo reservation saved in this browser.");
+});
+$("#ticket").addEventListener("click", async e => {
+  const go = e.target.closest("[data-desk-code]");
+  if (go){ openDesk("track", go.dataset.deskCode); return; }
+  if (e.target.closest("#ticketCopy")){
+    const code = $("#ticketCode").textContent;
+    try { await navigator.clipboard.writeText(code); toast("Code copied: " + code); }
+    catch { refInput.value = code; toast("Copy blocked by the browser. Code: " + code); }
+  }
+});
+
+addEventListener("storage", e => {
+  if (e.key !== DESK_KEY && e.key !== RECENT_KEY) return;
+  renderDesk();
+  if (desk.classList.contains("open") && refInput.value) trackCode();
+});
+renderDesk();
+</script>
+</body>
+</html>

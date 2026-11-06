@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff6f61">
+  <meta name="description" content="Pet Spa &amp; Hotel is a playful cat hotel concept with cosy stays, gentle grooming, neat trims and browser-only demo reservation tracking.">
+  <title>Pet Spa &amp; Hotel | Cat stays with extra sparkle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=__BUILD_VERSION__">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Pet Spa &amp; Hotel home">
+        <span class="brand-bubble" aria-hidden="true">P</span>
+        <span>Pet Spa &amp; Hotel<small>Cat hotel &amp; spa</small></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#playground">The playground</a>
+        <a href="#services">Treats &amp; stays</a>
+        <a href="#routine">A day here</a>
+        <a href="#reviews">Happy humans</a>
+      </div>
+      <div class="nav-actions">
+        <button class="text-button" type="button" data-open-panel="track">Track stay</button>
+        <button class="button button-small" type="button" data-open-booking>Book a stay</button>
+        <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-shape shape-one" aria-hidden="true"></div>
+      <div class="hero-shape shape-two" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="mini-label"><span>New</span> Tiny holiday. Huge purrs.</p>
+          <h1 id="hero-title">Their happiest<br><em>little getaway.</em></h1>
+          <p class="hero-text">Cosy sleepovers, gentle glow-ups and plenty of supervised mischief—made for cats, with daily peace of mind for their humans.</p>
+          <div class="hero-buttons">
+            <button class="button button-dark" type="button" data-open-booking>Plan their catcation <span aria-hidden="true">↗</span></button>
+            <a class="round-link" href="#playground"><span aria-hidden="true">▶</span> Peek inside</a>
+          </div>
+          <div class="cat-parent-row">
+            <div class="tiny-faces" aria-hidden="true"><span>😽</span><span>😸</span><span>😻</span></div>
+            <p><strong>Made for curious paws</strong><br><span>Clean rooms · Kind carers · Photo updates</span></p>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo-wrap" id="heroCarousel" aria-roledescription="carousel" aria-label="Happy Pet Spa &amp; Hotel guests">
+            <div class="hero-slides" aria-live="off">
+              <img class="hero-slide is-active" src="images/playful-cat-and-kitten.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="An adorable ginger cat and fluffy cream kitten together in a colourful cat hotel playroom" fetchpriority="high">
+              <img class="hero-slide" src="images/hero-tuxedo-kitten.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="A tuxedo cat and fluffy grey kitten relaxing together in a colourful cat hotel" loading="eager">
+              <img class="hero-slide" src="images/hero-calico-kitten.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="A calico cat and orange kitten exploring a mint play tunnel in a cheerful cat hotel" loading="eager">
+            </div>
+            <span class="photo-sticker sticker-top" aria-hidden="true">Besties<br>checked in!</span>
+            <span class="photo-sticker sticker-bottom"><b>4.9</b><span aria-hidden="true">★★★★★</span><small>sample rating</small></span>
+            <div class="hero-carousel-controls" aria-label="Hero image controls">
+              <button class="carousel-toggle" id="carouselToggle" type="button" aria-label="Pause hero images" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+              <div class="carousel-dots" role="group" aria-label="Choose hero image">
+                <button class="is-active" type="button" data-hero-slide="0" aria-label="Show hero image 1" aria-current="true"></button>
+                <button type="button" data-hero-slide="1" aria-label="Show hero image 2"></button>
+                <button type="button" data-hero-slide="2" aria-label="Show hero image 3"></button>
+              </div>
+            </div>
+          </div>
+          <div class="scribble" aria-hidden="true">↝</div>
+        </div>
+      </div>
+      <div class="joy-strip" aria-label="Care highlights">
+        <div class="joy-track">
+          <span>✦ Cosy hotel stays</span><span>✂ Gentle grooming</span><span>♡ Cuddles on request</span><span>☀ Daily photo updates</span><span>✦ Cosy hotel stays</span><span>✂ Gentle grooming</span><span>♡ Cuddles on request</span><span>☀ Daily photo updates</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="playground section" id="playground" aria-labelledby="playground-title">
+      <div class="shell">
+        <div class="section-heading heading-center">
+          <p class="kicker">Welcome to the good kind of chaos</p>
+          <h2 id="playground-title">A playground that feels<br><span>just like their kind of home.</span></h2>
+          <p>Every corner supports a cat's natural rhythm: climb, watch, pounce, snack, hide and snooze.</p>
+        </div>
+        <div class="play-grid">
+          <article class="play-card feature-card coral-card">
+            <div class="card-media">
+              <img src="images/sunny-snooze-spots.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="A ginger-and-white cat sleeping peacefully in a sunny plush bed" loading="lazy">
+              <span class="card-icon" aria-hidden="true">☀</span>
+            </div>
+            <div class="card-body">
+              <p class="card-number">01</p>
+              <h3>Sunny snooze spots</h3>
+              <p>Soft beds, cosy hideaways and peaceful private rooms for serious nap professionals.</p>
+              <button type="button" class="card-link" data-open-booking>Pick a room <span>→</span></button>
+            </div>
+          </article>
+          <article class="play-card feature-card mint-card">
+            <div class="card-media">
+              <img src="images/play-their-way.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="A playful tabby cat reaching for a feather toy in a colourful enrichment room" loading="lazy">
+              <span class="card-icon" aria-hidden="true">♧</span>
+            </div>
+            <div class="card-body">
+              <p class="card-number">02</p>
+              <h3>Play, their way</h3>
+              <p>Supervised toys, scratchers and climbing time matched to confidence and energy.</p>
+              <a class="card-link" href="#routine">See their day <span>→</span></a>
+            </div>
+          </article>
+          <article class="play-card image-card">
+            <img src="images/playful-cat-and-kitten.webp?v=__BUILD_VERSION__" width="1536" height="1024" alt="Cute kitten exploring a bright, colourful cat playroom" loading="lazy">
+            <span class="image-caption">Room to wiggle</span>
+          </article>
+          <article class="play-card lilac-card quote-card">
+            <p>“Send me the photo where she's pretending she doesn't miss me.”</p>
+            <span>— Every cat parent, probably</span>
+            <div class="doodle-cat" aria-hidden="true">=^..^=</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <div class="shell">
+        <div class="section-heading heading-split">
+          <div>
+            <p class="kicker">Pick their perfect plan</p>
+            <h2 id="services-title">Stay. Spruce. Strut.</h2>
+          </div>
+          <p>Book a sleepover, add a spa moment, or pop in for a tidy-up. Every service is shaped around feline comfort.</p>
+        </div>
+        <div class="service-tabs" role="tablist" aria-label="Cat care services">
+          <button type="button" role="tab" aria-selected="true" data-service-tab="stay">Hotel stay</button>
+          <button type="button" role="tab" aria-selected="false" data-service-tab="groom">Grooming</button>
+          <button type="button" role="tab" aria-selected="false" data-service-tab="trim">Trim &amp; tidy</button>
+        </div>
+        <div class="service-stage" id="serviceStage" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="routine section" id="routine" aria-labelledby="routine-title">
+      <div class="shell routine-grid">
+        <div class="routine-intro">
+          <p class="kicker">One very good day</p>
+          <h2 id="routine-title">From first sniff<br>to lights out.</h2>
+          <p>Predictable routines help cats settle. We leave space for personality, whether yours is a brave explorer or a champion blanket burrower.</p>
+          <button class="button button-light" type="button" data-open-booking>Tell us about your cat</button>
+        </div>
+        <ol class="timeline">
+          <li><time>9:00</time><div><span aria-hidden="true">👋</span><h3>Hello &amp; hidey-hole tour</h3><p>A quiet welcome with time to sniff, settle and choose a favourite corner.</p></div></li>
+          <li><time>12:30</time><div><span aria-hidden="true">🪶</span><h3>Play, stretch or spectate</h3><p>Enrichment follows their mood—joining in is always optional.</p></div></li>
+          <li><time>4:00</time><div><span aria-hidden="true">📸</span><h3>Photo update for you</h3><p>A small hello from their day, so you can relax too.</p></div></li>
+          <li><time>8:30</time><div><span aria-hidden="true">🌙</span><h3>Dinner, tidy-up, dreamland</h3><p>Familiar feeding notes, a clean room and a gentle wind-down.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="safety section" aria-labelledby="safety-title">
+      <div class="shell safety-card">
+        <div class="safety-copy">
+          <p class="kicker">Fun, with grown-up standards</p>
+          <h2 id="safety-title">Playful on the outside.<br>Serious about care.</h2>
+          <p>Behind every cheerful room is a simple care plan built around hygiene, wellbeing and your cat's own routine.</p>
+          <ul>
+            <li><span>✓</span> Vaccination check before every stay</li>
+            <li><span>✓</span> Fresh water and daily room cleaning</li>
+            <li><span>✓</span> Separate, secure cat-only spaces</li>
+            <li><span>✓</span> Feeding and medication notes followed</li>
+          </ul>
+        </div>
+        <div class="safety-badges" aria-label="Care standards">
+          <div><b>100%</b><span>cat-only<br>spaces</span></div>
+          <div><b>2×</b><span>daily room<br>checks</span></div>
+          <div><b>1:1</b><span>gentle care<br>moments</span></div>
+          <div class="big-paw" aria-hidden="true">🐾</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews section" id="reviews" aria-labelledby="reviews-title">
+      <div class="shell">
+        <div class="section-heading heading-center">
+          <p class="kicker">Notes from the group chat</p>
+          <h2 id="reviews-title">Humans talk. Cats approve.</h2>
+          <p>Illustrative feedback for this concept template—not verified customer reviews.</p>
+        </div>
+        <div class="review-grid">
+          <article><div class="review-stars" aria-label="Five out of five stars">★★★★★</div><p>“The booking was easy, the tracking code was handy, and Milo came home acting like he owned the place.”</p><footer><span>😸</span><div><b>Nadia &amp; Milo</b><small>Sample hotel stay</small></div></footer></article>
+          <article class="review-featured"><div class="review-stars" aria-label="Five out of five stars">★★★★★</div><p>“I loved the playful updates. Oyen looked so relaxed that I almost felt guilty picking him up.”</p><footer><span>😽</span><div><b>Farah &amp; Oyen</b><small>Sample grooming + stay</small></div></footer></article>
+          <article><div class="review-stars" aria-label="Five out of five stars">★★★★★</div><p>“Luna is shy, so the gentle routine mattered. The experience felt clear, warm and well organised.”</p><footer><span>😻</span><div><b>Jia &amp; Luna</b><small>Sample cosy stay</small></div></footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell cta-grid">
+        <div>
+          <p class="kicker">Paws packed?</p>
+          <h2>Let's make their next<br>stay the fun one.</h2>
+        </div>
+        <div class="cta-actions">
+          <button class="button button-dark" type="button" data-open-booking>Start a demo reservation</button>
+          <button class="text-button" type="button" data-open-panel="track">Already booked? Track it →</button>
+        </div>
+      </div>
+      <div class="cta-doodles" aria-hidden="true"><span>✦</span><span>♡</span><span>🐾</span><span>☀</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <a class="brand footer-brand" href="#top"><span class="brand-bubble" aria-hidden="true">P</span><span>Pet Spa &amp; Hotel<small>Cat hotel &amp; spa</small></span></a>
+      <p>Playful care for Kuala Lumpur's most particular little guests.<br><small>Concept template · Demo data stays in this browser</small></p>
+      <nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#routine">Daily rhythm</a><button type="button" data-open-panel="desk">Front desk demo</button></nav>
+      <span>© <span id="year"></span> Pet Spa &amp; Hotel</span>
+    </div>
+  </footer>
+
+  <button class="floating-book" type="button" data-open-booking aria-label="Book a cat stay"><span aria-hidden="true">🐾</span><b>Book</b></button>
+
+  <div class="overlay" id="bookingOverlay" aria-hidden="true">
+    <section class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+      <button class="close-button" type="button" data-close-booking aria-label="Close reservation form">×</button>
+      <div class="modal-heading">
+        <p class="kicker">Demo reservation</p>
+        <h2 id="bookingTitle">Plan a very good stay.</h2>
+        <p>Nothing is sent. Your demo reservation lives only in this browser.</p>
+      </div>
+      <form id="bookingForm" novalidate>
+        <div class="form-grid">
+          <label>Your name<input id="ownerName" name="ownerName" type="text" autocomplete="name" placeholder="e.g. Aina" required></label>
+          <label>Cat's name<input id="catName" name="catName" type="text" placeholder="e.g. Mochi" required></label>
+          <label>Check-in<input id="checkIn" name="checkIn" type="date" required></label>
+          <label>Check-out<input id="checkOut" name="checkOut" type="date" required></label>
+          <label>Pick a plan<select id="service" name="service"><option value="stay">Playroom Stay · RM48/night</option><option value="stay-groom">Stay + Glow-Up · RM83/night</option><option value="groom">Fresh Fur Groom · RM65/visit</option><option value="trim">Tiny Tidy Trim · RM35/visit</option></select></label>
+          <label>Cat personality<select id="personality" name="personality"><option>Curious explorer</option><option>Shy sweetheart</option><option>Playtime champion</option><option>Professional napper</option></select></label>
+          <label class="full-field">Care notes<textarea id="notes" name="notes" rows="3" placeholder="Food, medicine, favourite toys or things we should know"></textarea></label>
+        </div>
+        <div class="estimate" id="estimate"><span>Estimated demo total</span><b>Choose valid dates</b></div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="button button-dark full-button" type="submit">Save demo reservation &amp; get code</button>
+      </form>
+      <div class="booking-success" id="bookingSuccess" hidden tabindex="-1"></div>
+    </section>
+  </div>
+
+  <div class="panel-backdrop" id="panelBackdrop"></div>
+  <aside class="reservation-panel" id="reservationPanel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+    <header>
+      <div><p class="kicker">Reservation clubhouse</p><h2 id="panelTitle">Find a catcation</h2></div>
+      <button class="close-button" id="panelClose" type="button" aria-label="Close reservation panel">×</button>
+    </header>
+    <div class="panel-tabs" role="tablist" aria-label="Reservation tools">
+      <button type="button" role="tab" aria-selected="true" data-panel-tab="track">Track a stay</button>
+      <button type="button" role="tab" aria-selected="false" data-panel-tab="desk">Front desk demo</button>
+    </div>
+    <div class="panel-body">
+      <section id="trackPanel" role="tabpanel">
+        <label class="track-field">Tracking code<div><input id="trackingCode" type="text" autocomplete="off" spellcheck="false" placeholder="POP-ABC123"><button type="button" id="trackButton">Find</button></div></label>
+        <div class="recent-codes" id="recentCodes" hidden></div>
+        <div id="trackingResult" aria-live="polite"><div class="empty-state"><span>🔎</span><p>Enter the code from your demo reservation ticket.</p></div></div>
+      </section>
+      <section id="deskPanel" role="tabpanel" hidden>
+        <div class="desk-stats"><div><b id="totalStat">0</b><span>Total</span></div><div><b id="pendingStat">0</b><span>Pending</span></div><div><b id="confirmedStat">0</b><span>Confirmed</span></div></div>
+        <div class="desk-tools"><button type="button" id="seedButton">Add samples</button><button type="button" id="clearButton">Clear demo data</button></div>
+        <div class="desk-list" id="deskList"></div>
+      </section>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js?v=__BUILD_VERSION__"></script>
+</body>
+</html>
