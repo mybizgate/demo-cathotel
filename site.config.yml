@@ -1,0 +1,42 @@
+# MyBizGate site configuration. The slug is the permanent identity; the domain may change later.
+client:
+  name: Pet Spa & Hotel
+  slug: cathotel
+template:
+  id: 00-empty-template
+  version: 1.0.0
+platform_ref: v1.7.0
+domain:
+  type: subdomain
+  primary: demo-cathotel.niagova.com
+business:
+  whatsapp: '+601158121239'
+  email: sales@niagova.com
+  address: Kampung Pandan, 2A Lorong Delapan,55100 Kuala Lumpur
+  opening_hours: 9.00am - 10.00pm
+  tiktok: https://tiktok.com
+  short_name: Pet Spa
+  locality: Kuala Lumpur
+hosting:
+  deploy_dir: public_html/demo/cathotel/
+  ftp_account: dedicated
+site:
+  kind: demo
+  environment: production
+  production_url: https://demo-cathotel.niagova.com
+  identity: Pet Spa & Hotel
+build:
+  exclude: []
+  images:
+    convert: true
+    quality: 82
+    max_width: 1920
+    preserve: []
+  cache_bust: true
+qa:
+  lighthouse: false
+  browser_smoke: false
+  screenshots: false
+github:
+  repo: demo-cathotel
+  visibility: public
