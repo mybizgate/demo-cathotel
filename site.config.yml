@@ -5,7 +5,7 @@ client:
 template:
   id: 00-empty-template
   version: 1.0.0
-platform_ref: v1.7.0
+platform_ref: v1.7.1
 domain:
   type: subdomain
   primary: demo-cathotel.niagova.com
