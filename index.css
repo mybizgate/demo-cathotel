@@ -314,3 +314,77 @@ a {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Prospect presentation: personal brand first, unobtrusive style selector, full preview. */
+.prospect-bar[hidden] { display: none !important; }
+.is-personalised .showcase-bar { display: none; }
+.prospect-bar {
+  z-index: 10;
+  position: relative;
+  flex: none;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center;
+  gap: clamp(12px,2vw,30px);
+  min-height: 78px;
+  padding: 11px clamp(16px,3vw,38px);
+  border-bottom: 1px solid #dbe6df;
+  background: linear-gradient(110deg, #fbfaf5 0%, #f3f6f1 100%);
+  box-shadow: 0 7px 24px rgba(26,58,59,.075);
+}
+.prospect-identity { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.prospect-monogram {
+  display: grid; place-items: center; flex: none;
+  width: 45px; height: 45px; border-radius: 14px;
+  background: #18494e; color: #f5ebd4;
+  font: 800 1rem/1 system-ui, sans-serif; letter-spacing: -.07em;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+}
+.prospect-intro { min-width: 0; display: grid; gap: 3px; }
+.prospect-intro strong {
+  color: #193c3d; font-size: clamp(.89rem,1.5vw,1.06rem);
+  line-height: 1.25; letter-spacing: -.025em;
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+.prospect-intro small { color: #587070; font-size: .7rem; line-height: 1.35; }
+.prospect-intro small a { color: #1e5d5b; font-weight: 700; }
+.prospect-styles {
+  display: flex; gap: 3px; padding: 4px;
+  border: 1px solid #d9e6df; border-radius: 999px; background: #e9f0eb;
+}
+.prospect-styles button {
+  display: inline-grid; place-items: center; min-width: 78px; min-height: 38px;
+  padding: 8px 13px; border: 0; border-radius: 999px; background: transparent;
+  color: #41615f; font: 700 .79rem/1.2 system-ui,sans-serif; cursor: pointer;
+  transition: background .18s ease,color .18s ease;
+}
+.prospect-styles button[aria-pressed="true"] { background:#194d4c; color:#fff; box-shadow:0 3px 9px rgba(0,0,0,.13); }
+.prospect-styles button:hover:not([aria-pressed="true"]) { background:#d7e7df; }
+.prospect-cta {
+  justify-self: end; display: inline-flex; align-items:center; justify-content:center;
+  gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 999px;
+  background:#194d4c; color:#fff; text-decoration: none;
+  font-size:.83rem; font-weight: 800; white-space: nowrap;
+  box-shadow: 0 5px 12px rgba(14,62,58,.15);
+}
+.prospect-cta:hover { background:#0e3838; }
+.prospect-bar button:focus-visible,
+.prospect-bar a:focus-visible { outline:3px solid #bd651c; outline-offset:3px; }
+
+@media (max-width: 800px) {
+  .prospect-bar { grid-template-columns: minmax(0,1fr) auto; gap:9px 10px; padding:10px 14px; }
+  .prospect-styles { grid-column:1/-1; grid-row:2; width:100%; }
+  .prospect-styles button { flex:1; min-width:0; min-height:36px; }
+  .prospect-cta { grid-column:2; grid-row:1; padding:9px 13px; }
+}
+@media (max-width: 380px) {
+  .prospect-identity { gap:8px; }
+  .prospect-monogram { width:38px; height:38px; border-radius:11px; }
+  .prospect-intro small { font-size:.62rem; }
+  .prospect-cta { padding:8px 11px; font-size:.76rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prospect-styles button { transition: none; }
+}

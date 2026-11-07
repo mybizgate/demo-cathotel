@@ -1273,7 +1273,7 @@ function calc(){
 function message(){
   const svcName = {hotel:"Hotel stay (boarding)", daycare:"Daycare", grooming:"Grooming"}[svc];
   const {total} = calc();
-  const L = [`Hi Pet Spa & Hotel! I'd like to make a booking 🐾`, ``, `*Service:* ${svcName}`];
+  const L = [window.demoFor && window.demoFor.name ? `Hi Niagova! This is a sample booking enquiry for ${window.demoFor.name} (website preview only). 🐾` : `Hi Pet Spa & Hotel! I'd like to make a booking 🐾`, ``, `*Service:* ${svcName}`];
   if (svc === "hotel"){
     L.push(`*Check-in:* ${niceDate(f.dateIn.value)}`, `*Check-out:* ${niceDate(f.dateOut.value)} (${nights()} night${nights() === 1 ? "" : "s"})`, `*Suite:* ${f.room.value === "deluxe" ? "Deluxe" : "Standard"}`);
   } else {
@@ -1535,5 +1535,6 @@ addEventListener("storage", e => {
 });
 renderDesk();
 </script>
+<script src="../prospect-enhance.js?v=__BUILD_VERSION__"></script>
 </body>
 </html>

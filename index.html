@@ -40,8 +40,27 @@
     </div>
   </header>
 
+  <!-- A shareable ?for= link opens as a branded website proposal, not a template catalogue. -->
+  <header class="prospect-bar" id="prospectBar" hidden aria-label="Your personalised website preview">
+    <div class="prospect-identity">
+      <span class="prospect-monogram" id="prospectMonogram" aria-hidden="true">🐾</span>
+      <div class="prospect-intro">
+        <strong id="prospectName">Your business</strong>
+        <small>Website concept made just for you <span aria-hidden="true">·</span> <a href="https://niagova.com/" target="_blank" rel="noopener">by Niagova</a></small>
+      </div>
+    </div>
+    <nav class="prospect-styles" aria-label="Explore your website styles">
+      <button type="button" data-template="premium" aria-pressed="false">Elegant</button>
+      <button type="button" data-template="modern" aria-pressed="false">Modern</button>
+      <button type="button" data-template="playful" aria-pressed="false">Playful</button>
+    </nav>
+    <a class="prospect-cta" id="prospectContact" href="https://niagova.com/#pricing" target="_blank" rel="noopener">
+      <span>Make it yours</span><span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
   <main class="preview-shell">
-    <iframe id="templatePreview" name="templatePreview" src="01-modern/index.html" title="Modern cat hotel website template preview"></iframe>
+    <iframe id="templatePreview" name="templatePreview" src="about:blank" title="Cat hotel website template preview"></iframe>
   </main>
 
   <noscript>
